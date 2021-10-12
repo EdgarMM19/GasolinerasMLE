@@ -1,7 +1,8 @@
 <component name="libraryTable">
-  <library name="AIMA">
+  <library name="GasolinerasMLE">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/AIMA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Gasolina.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
