@@ -22,7 +22,7 @@ public class Coordinates {
     {
         return y;
     }
-    public Boolean EqualCoordinates(Coordinates coordinates)
+    public Boolean EqualsCoordinates(Coordinates coordinates)
     {
         return coordinates.GetX() == GetX() && coordinates.GetY() == GetY();
     }

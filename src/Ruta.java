@@ -1,18 +1,19 @@
 import java.util.ArrayList;
 
 public class Ruta {
-    // L'ultima parada es sempre la inicial.
-    private ArrayList<Coordinates> coords_parades;
-    private int num_parades;
-    private int kilometres;
+    // Un camió cisterna sempre comença i acaba al mateix centre de distribució. Per això, obviem incloure el centre de
+    // distribució com a una última parada. Assumirem que després de l'última parada de la ruta es retorna a la de la
+    // primera posició.
     private int num_viatges;
+    private int num_parades;
+    private ArrayList<Coordinates> parades;
+    private int quilometres_recorreguts;
 
-    public Ruta(int x, int y)
-    {
+    public Ruta(int x, int y) {
         num_parades = 0;
         num_viatges = 0;
-        coords_parades = new ArrayList<Coordinates>(0);
-        coords_parades.add(new Coordinates(x,y));
+        parades = new ArrayList<Coordinates>(0);
+        parades.add(new Coordinates(x, y));
     }
 
     public int GetNumParades()
@@ -20,38 +21,38 @@ public class Ruta {
         return num_parades;
     }
 
-    public int GetKilometres()
+    public int GetQuilometresRecorreguts()
     {
-        return kilometres;
+        return quilometres_recorreguts;
     }
 
-    public Coordinates GetCoordinates(int posicio)
+    public Coordinates GetCoordinates(int index)
     {
-        return coords_parades.get(posicio);
+        return parades.get(index);
     }
 
-    public Boolean EsPotAfegirParadaSensePassarPelCentreDeDistribucio()
+    public Boolean EsPotAfegirParadaSenseTornarAlCentreDeDistribucio()
     {
-        if (coords_parades.size() < 3)
+        if (parades.size() <= 2)
         {
             return true;
         }
-        return coords_parades.get(coords_parades.size() - 1).EqualCoordinates(coords_parades.get(0)) || coords_parades.get(coords_parades.size() - 2).EqualCoordinates(coords_parades.get(0));
+        return parades.get(parades.size() - 1).EqualsCoordinates(parades.get(0)) ||
+                parades.get(parades.size() - 2).EqualsCoordinates(parades.get(0));
     }
 
-    public void AfegeixParada(int x, int y)
-    {
-        Coordinates coords_ultima_parada = coords_parades.get(coords_parades.size()-1);
-        Coordinates coords_primera_parada = coords_parades.get(0);
-        Coordinates coords_nova_parada = new Coordinates(x,y);
-        if (coords_primera_parada.EqualCoordinates(coords_nova_parada))
-        {
-            num_viatges++;
+    public void AfegeixParada(int x, int y) {
+        Coordinates coords_primera_parada = parades.get(0);
+        Coordinates coords_ultima_parada = parades.get(parades.size()-1);
+        Coordinates coords_nova_parada = new Coordinates(x, y);
+        // Incrementem el número de viatges quan afegim una nova parada i l'anterior és el centre de distribució.
+        if (coords_primera_parada.EqualsCoordinates(coords_ultima_parada)) {
+            ++num_viatges;
         }
-        coords_parades.add(coords_nova_parada);
-        kilometres -= UtilsGasolineres.distancia(coords_ultima_parada, coords_primera_parada);
-        kilometres += UtilsGasolineres.distancia(coords_ultima_parada, coords_nova_parada);
-        kilometres += UtilsGasolineres.distancia(coords_nova_parada, coords_primera_parada);
-        num_parades++;
+        parades.add(coords_nova_parada);
+        quilometres_recorreguts -= Utils.GetDistancia(coords_ultima_parada, coords_primera_parada);
+        quilometres_recorreguts += Utils.GetDistancia(coords_ultima_parada, coords_nova_parada);
+        quilometres_recorreguts += Utils.GetDistancia(coords_nova_parada, coords_primera_parada);
+        ++num_parades;
     }
 }
