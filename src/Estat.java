@@ -70,5 +70,30 @@ public class Estat {
         }
     }
 
+    static public int GetDistanciaEntreCentreIGasolinera(int c, int g) {
+        return distancies[c][num_centres + g];
+    }
+
+    static public int GetDistanciaEntreCentres(int c1, int c2) {
+        return distancies[c1][c2];
+    }
+
+    static public int GetDistanciaEntreGasolineres(int g1, int g2) {
+        return distancies[num_centres + g1][num_centres + g2];
+    }
+
+    public int AvaluaFuncioHeuristica(){
+        int cost_quilometres_totals = 0;
+        int diners_cobrats = 0;
+        int diners_perduts = 0;
+
+        for (int i = 0; i < num_centres; ++i) {
+            cost_quilometres_totals += rutes[i].GetQuilometresRecorreguts() * cost_quilometre;
+        }
+
+        // TODO(laia): acabar
+
+        return 0;
+    }
 
 }
