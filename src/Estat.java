@@ -1,6 +1,8 @@
 import IA.Gasolina.CentrosDistribucion;
+import IA.Gasolina.Gasolinera;
 import IA.Gasolina.Gasolineras;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Estat {
@@ -91,9 +93,33 @@ public class Estat {
             cost_quilometres_totals += rutes[i].GetQuilometresRecorreguts() * cost_quilometre;
         }
 
-        // TODO(laia): acabar
+        for (int i = 0; i < num_gasolineres; ++i) {
+            Gasolinera g = gasolineres.get(i);
+            ArrayList<Integer> p = g.getPeticiones();
+            int num_diposits = p.size();
+            for (int j = 0; j < num_diposits; ++j) {
+                if ( assignacio_diposit[i][j] != -1) {
+                    int percentatge;
+                    if (p.get(j) == 0) {
+                        percentatge = 102;
+                    } else {
+                        percentatge = 100 - (1 << p.get(j));
+                    }
+                    diners_cobrats += valor_diposit*percentatge;
+                } else {
+                    // percentatge_perdut = (100 - 2^d) - (100 - 2^(d+1)) = 2^d
+                    int percentatge_perdut;
+                    if (p.get(j) == 0) {
+                        percentatge_perdut = 4;
+                    } else {
+                        percentatge_perdut = 1 << p.get(j);
+                    }
+                    diners_perduts += valor_diposit*percentatge_perdut;
+                }
+            }
+        }
 
-        return 0;
+        return diners_cobrats - cost_quilometres_totals - diners_perduts;
     }
 
 }
