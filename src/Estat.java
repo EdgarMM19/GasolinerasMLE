@@ -1,12 +1,15 @@
 import IA.Gasolina.CentrosDistribucion;
 import IA.Gasolina.Gasolinera;
 import IA.Gasolina.Gasolineras;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 public class Estat {
-    private static final int max_quilometres = 40;
+    private static final int max_quilometres = 640;
     private static final int max_num_viatges = 5;
     private static final int valor_diposit = 1000;
     private static final int cost_quilometre = 2;
@@ -23,7 +26,7 @@ public class Estat {
     // La matriu 'assignacio_diposit' guarda, per cada gasolinera, un vector que conté l'índex del centre de distribució
     // assignat a cadascun dels seus dipòsits. Si un dipòsit no té centre de distribució assignat, hi ha -1 a la seva
     // posició.
-    private int[][] assignacio_diposit;
+    private EstatGasolinera[] estat_gasolineres;
 
     public Estat(@NotNull CentrosDistribucion _centres, @NotNull Gasolineras _gasolineres)
     {
@@ -57,11 +60,10 @@ public class Estat {
             }
         }
 
-        assignacio_diposit = new int[num_gasolineres][];
+        estat_gasolineres = new EstatGasolinera[num_gasolineres];
         // Omplim l'assignació de dipòsits amb els valors i mides inicials.
         for (int i = 0; i < num_gasolineres; ++i) {
-            assignacio_diposit[i] = new int[gasolineres.get(i).getPeticiones().size()];
-            Arrays.fill(assignacio_diposit[i], -1);
+            estat_gasolineres[i] = new EstatGasolinera(gasolineres.get(i));
         }
 
         // Per cada centre de distribució, li assignem la ruta inicial, que correspon a que el camió cisterna no s'ha
@@ -83,7 +85,12 @@ public class Estat {
     static public int GetDistanciaEntreGasolineres(int g1, int g2) {
         return distancies[num_centres + g1][num_centres + g2];
     }
+    static public int GetDistanciaEntreNodeIGasolinera(int n, int g) { return distancies[n][num_centres+g]; }
 
+    public Ruta[] GetRutes()
+    {
+        return rutes;
+    }
     public int AvaluaFuncioHeuristica(){
         int cost_quilometres_totals = 0;
         int diners_cobrats = 0;
@@ -98,7 +105,7 @@ public class Estat {
             ArrayList<Integer> p = g.getPeticiones();
             int num_diposits = p.size();
             for (int j = 0; j < num_diposits; ++j) {
-                if ( assignacio_diposit[i][j] != -1) {
+                if ( estat_gasolineres[i].GetAssignacioDiposit()[j] != -1) {
                     int percentatge;
                     if (p.get(j) == 0) {
                         percentatge = 102;
@@ -118,8 +125,121 @@ public class Estat {
                 }
             }
         }
-
-        return diners_cobrats - cost_quilometres_totals - diners_perduts;
+        // La funcio heuristica s'ha de minimitzar. Canviem el signe.
+        return - (diners_cobrats - cost_quilometres_totals - diners_perduts);
+    }
+    public void CreaEstatInicialBuit()
+    {
+        // Com mostra el nom l'estat inicial és aquell on no hi ha res assignat.
     }
 
+    private int GetGasolineraDisponibleMesPropera(int index)
+    {
+        int gasolinera_mes_propera = -1;
+        for (int i = 0; i < num_gasolineres; ++i) {
+            if (!estat_gasolineres[i].GasolineraSatisfeta() &&
+                    (gasolinera_mes_propera == -1 ||
+                            GetDistanciaEntreNodeIGasolinera(index,i) < GetDistanciaEntreNodeIGasolinera(index,gasolinera_mes_propera))) {
+                gasolinera_mes_propera = i;
+            }
+        }
+        return gasolinera_mes_propera;
+    }
+    public void CreaEstatPropers()
+    {
+        // Ens basarem en assignar sempre el camió que està més proper a una gasolinera en cada moment.
+        // Per això tenim una cua on fiquem la informació sobre: camió, distància a la gasolinera on es vol dirigir,
+        // nombre de viatge que estaria fent.
+
+        // Ens guardem la gasolinera amb alguna ordre no servida més propera a cada punt.
+        int [] gasolinera_mes_propera = new int[num_centres+num_gasolineres];
+        for (int i = 0; i < num_centres+num_gasolineres; ++i) {
+            gasolinera_mes_propera[i] = GetGasolineraDisponibleMesPropera(i);
+        }
+        class Tuple {
+            final int camio;
+            final int distancia;
+            final int num_parades;
+            // Entre 0..(num_centres + num_gasolineres - 1)
+            final int index_posicio_actual;
+            Tuple (int camio, int distancia, int num_parades, int index_posicio_actual)
+            {
+                this.camio = camio;
+                this.distancia = distancia;
+                this.num_parades = num_parades;
+                this.index_posicio_actual = index_posicio_actual;
+            }
+        }
+        class TupleComparer implements Comparator<Tuple> {
+            public int compare(Tuple t1, Tuple t2) {
+                if (t1.distancia < t2.distancia)
+                    return 1;
+                if (t1.distancia > t2.distancia)
+                    return -1;
+                if (t1.num_parades < t2.num_parades)
+                    return 1;
+                if (t1.num_parades > t2.num_parades)
+                    return -1;
+                return Integer.compare(t1.camio, t2.camio);
+            }
+        }
+        PriorityQueue<Tuple> pq = new PriorityQueue<>(new TupleComparer());
+        for (int i = 0; i < num_centres; ++i)
+        {
+            pq.add(new Tuple(i, gasolinera_mes_propera[i], 0, i));
+        }
+        while (!pq.isEmpty())
+        {
+            Tuple act = pq.remove();
+            if (rutes[act.camio].GetNumParades() != act.num_parades)
+            {
+                continue;
+            }
+            int gasolinera = gasolinera_mes_propera[act.index_posicio_actual];
+            if (estat_gasolineres[gasolinera].GasolineraSatisfeta()) {
+                gasolinera_mes_propera[act.index_posicio_actual] = GetGasolineraDisponibleMesPropera(act.index_posicio_actual);
+                int gasolinera_propera = gasolinera_mes_propera[act.index_posicio_actual];
+                if (gasolinera_propera == -1) {
+                    continue;
+                }
+                if (rutes[act.camio].QuilometresViatgeITornadaAlCentre(Coordinates.GetCoordsGasolinera(gasolineres.get(gasolinera_propera))) <= max_quilometres)
+                {
+                    pq.add(new Tuple(act.camio, GetDistanciaEntreNodeIGasolinera(act.index_posicio_actual, gasolinera_propera), act.num_parades, act.index_posicio_actual));
+                }
+                else
+                {
+                    rutes[act.camio].AfegeixParada(Coordinates.GetCoordsCentre(centres.get(act.camio)));
+                }
+            }
+            else
+            {
+                rutes[act.camio].AfegeixParada(Coordinates.GetCoordsGasolinera(gasolineres.get(gasolinera)));
+                estat_gasolineres[gasolinera].CamioArribat(act.camio);
+                int propera_posicio;
+                if (!rutes[act.camio].EsPotAfegirParadaSenseTornarAlCentreDeDistribucio()) {
+                    rutes[act.camio].AfegeixParada(Coordinates.GetCoordsCentre(centres.get(act.camio)));
+                    propera_posicio = act.camio;
+                    if (rutes[act.camio].GetNumViatges() == max_num_viatges)
+                    {
+                        continue;
+                    }
+                }
+                else
+                {
+                    propera_posicio = num_centres+gasolinera;
+                }
+                int gasolinera_propera = GetGasolineraDisponibleMesPropera(propera_posicio);
+                if (gasolinera_propera == -1) {
+                    continue;
+                }
+                if (rutes[act.camio].QuilometresViatgeITornadaAlCentre(Coordinates.GetCoordsGasolinera(gasolineres.get(gasolinera_propera))) <= max_quilometres)
+                {
+                    pq.add(new Tuple(act.camio, GetDistanciaEntreNodeIGasolinera(propera_posicio, gasolinera_propera), rutes[act.camio].GetNumParades(), propera_posicio));
+                }
+                else {
+                    rutes[act.camio].AfegeixParada(Coordinates.GetCoordsCentre(centres.get(act.camio)));
+                }
+            }
+        }
+    }
 }

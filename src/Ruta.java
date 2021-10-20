@@ -21,6 +21,8 @@ public class Ruta {
         return num_parades;
     }
 
+    public int GetNumViatges() { return num_viatges; }
+
     public int GetQuilometresRecorreguts()
     {
         return quilometres_recorreguts;
@@ -41,11 +43,18 @@ public class Ruta {
                 parades.get(parades.size() - 2).EqualsCoordinates(parades.get(0));
     }
 
-    public void AfegeixParada(int x, int y) {
+    public int QuilometresViatgeITornadaAlCentre(Coordinates coords_nova_parada)
+    {
         Coordinates coords_primera_parada = parades.get(0);
         Coordinates coords_ultima_parada = parades.get(parades.size()-1);
-        Coordinates coords_nova_parada = new Coordinates(x, y);
-        // Incrementem el número de viatges quan afegim una nova parada i l'anterior és el centre de distribució.
+        return quilometres_recorreguts - Utils.GetDistancia(coords_ultima_parada, coords_primera_parada) +
+                Utils.GetDistancia(coords_ultima_parada, coords_nova_parada) +
+                Utils.GetDistancia(coords_nova_parada, coords_primera_parada);
+    }
+    public void AfegeixParada(Coordinates coords_nova_parada) {
+        Coordinates coords_primera_parada = parades.get(0);
+        Coordinates coords_ultima_parada = parades.get(parades.size()-1);
+        // Incrementem el nombre de viatges quan afegim una nova parada i l'anterior és el centre de distribució.
         if (coords_primera_parada.EqualsCoordinates(coords_ultima_parada)) {
             ++num_viatges;
         }

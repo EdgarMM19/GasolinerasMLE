@@ -1,3 +1,7 @@
+import IA.Gasolina.CentrosDistribucion;
+import IA.Gasolina.Distribucion;
+import IA.Gasolina.Gasolinera;
+
 public class Coordinates {
     private int x;
     private int y;
@@ -25,5 +29,13 @@ public class Coordinates {
     public Boolean EqualsCoordinates(Coordinates coordinates)
     {
         return coordinates.GetX() == GetX() && coordinates.GetY() == GetY();
+    }
+    static public Coordinates GetCoordsGasolinera(Gasolinera gasolinera)
+    {
+        return new Coordinates(gasolinera.getCoordX(), gasolinera.getCoordY());
+    }
+    static public Coordinates GetCoordsCentre(Distribucion centre)
+    {
+        return new Coordinates(centre.getCoordX(), centre.getCoordY());
     }
 }

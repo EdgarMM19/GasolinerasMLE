@@ -5,16 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb830d75-21ec-421e-a284-4e5c83833e1e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EstatGasolinera.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MainProva.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Probatonta.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Coordinates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EstatGeneral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Estat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ruta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ruta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UtilsGasolineres.java" beforeDir="false" />
     </list>
-    <list id="d260b005-edb7-4bcd-b9b8-b4b511ce8b0b" name="Changes by Laia" comment="">
-      <change beforePath="$PROJECT_DIR$/src/EstatGeneral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estat.java" afterDir="false" />
-    </list>
+    <list id="d260b005-edb7-4bcd-b9b8-b4b511ce8b0b" name="Changes by Laia" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,23 +36,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/Estat.java">
-      <ranges>
-        <range start1="2" end1="3" start2="2" end2="2" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
-        <range start1="4" end1="5" start2="3" end2="3" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
-        <range start1="7" end1="10" start2="5" end2="13" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
-        <range start1="11" end1="15" start2="14" end2="19" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
-        <range start1="16" end1="17" start2="20" end2="24" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
-        <range start1="18" end1="19" start2="25" end2="26" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
-        <range start1="20" end1="21" start2="27" end2="30" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
-        <range start1="22" end1="31" start2="31" end2="43" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
-        <range start1="32" end1="32" start2="44" end2="45" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
-        <range start1="33" end1="42" start2="46" end2="68" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
-        <range start1="46" end1="46" start2="72" end2="97" changelist="d260b005-edb7-4bcd-b9b8-b4b511ce8b0b" />
-      </ranges>
-    </file>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedIndex" value="1" />
@@ -79,7 +61,14 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.MainProva">
+    <configuration name="MainProva" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainProva" />
+      <module name="GasolinerasMLE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="IA.Gasolina.Test" />
       <module name="GasolinerasMLE" />
@@ -95,6 +84,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainProva" />
         <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
@@ -111,6 +101,7 @@
       <workItem from="1634121524078" duration="233000" />
       <workItem from="1634562134764" duration="1253000" />
       <workItem from="1634563533516" duration="9298000" />
+      <workItem from="1634588853558" duration="10299000" />
     </task>
     <servers />
   </component>
