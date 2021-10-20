@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb830d75-21ec-421e-a284-4e5c83833e1e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/AIMA.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GasolineraGoalTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GasolineraHeuristicFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GasolineraSuccesorFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MainAima.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GasolinerasMLE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/GasolinerasMLE.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Estat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainProva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainProva.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EstatGasolinera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EstatGasolinera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ruta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ruta.java" afterDir="false" />
     </list>
     <list id="d260b005-edb7-4bcd-b9b8-b4b511ce8b0b" name="Changes by Laia" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -111,7 +106,7 @@
       <workItem from="1634121524078" duration="233000" />
       <workItem from="1634562134764" duration="1253000" />
       <workItem from="1634563533516" duration="9298000" />
-      <workItem from="1634588853558" duration="11890000" />
+      <workItem from="1634588853558" duration="14701000" />
     </task>
     <servers />
   </component>

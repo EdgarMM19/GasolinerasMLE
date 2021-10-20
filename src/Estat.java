@@ -183,12 +183,10 @@ public class Estat {
             }
         }
         PriorityQueue<Tuple> pq = new PriorityQueue<>(new TupleComparer());
-        for (int i = 0; i < num_centres; ++i)
-        {
+        for (int i = 0; i < num_centres; ++i) {
             pq.add(new Tuple(i, gasolinera_mes_propera[i], 0, i));
         }
-        while (!pq.isEmpty())
-        {
+        while (!pq.isEmpty()) {
             Tuple act = pq.remove();
             if (rutes[act.camio].GetNumParades() != act.num_parades)
             {

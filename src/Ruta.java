@@ -64,4 +64,16 @@ public class Ruta {
         quilometres_recorreguts += Utils.GetDistancia(coords_nova_parada, coords_primera_parada);
         ++num_parades;
     }
+    public void EliminaParada() {
+        if (parades.size() == 1) return;
+        Coordinates ultim = parades.remove(parades.size()-1);
+        num_parades--;
+        // Si començava un viatge s'ha d'eliminar.
+        if (parades.get(parades.size()-1).EqualsCoordinates(parades.get(0))){
+            num_viatges--;
+        }
+        quilometres_recorreguts -= Utils.GetDistancia(ultim, parades.get(parades.size()-1));
+        quilometres_recorreguts -= Utils.GetDistancia(ultim, parades.get(0));
+        quilometres_recorreguts += Utils.GetDistancia(parades.get(parades.size()-1), parades.get(0));
+    }
 }

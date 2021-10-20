@@ -42,4 +42,28 @@ public class EstatGasolinera {
         }
         assignacio_diposit[diposit_agafat] = camio;
     }
+    public void CamioMarxat(int camio) {
+        int diposit_agafat = -1, dies_diposit = -1;
+        for (int i = 0; i < numero_peticions; ++i) {
+            if (assignacio_diposit[i] == camio && (dies_diposit == -1 || gasolinera.getPeticiones().get(i) < dies_diposit)) {
+                diposit_agafat = i;
+                dies_diposit = gasolinera.getPeticiones().get(i);
+            }
+        }
+        if (diposit_agafat == -1) return;
+        numero_peticions_satisfetes--;
+        assignacio_diposit[diposit_agafat] = -1;
+        int diposit_canviar = -1, dies_diposit_canvi = dies_diposit;
+        for (int i = 0; i < numero_peticions; ++i) {
+            if (assignacio_diposit[i] != -1 && gasolinera.getPeticiones().get(i) < dies_diposit_canvi)
+            {
+                dies_diposit_canvi = gasolinera.getPeticiones().get(i);
+                diposit_canviar = i;
+            }
+        }
+        if (diposit_canviar != -1) {
+             assignacio_diposit[diposit_agafat] = assignacio_diposit[diposit_canviar];
+             assignacio_diposit[diposit_canviar] = -1;
+        }
+    }
 }
