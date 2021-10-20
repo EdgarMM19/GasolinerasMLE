@@ -7,13 +7,16 @@ public class Ruta {
     private int num_viatges;
     private int num_parades;
     private ArrayList<Coordinates> parades;
+    private ArrayList<Integer> id_parades;
     private int quilometres_recorreguts;
 
-    public Ruta(int x, int y) {
+    public Ruta(Coordinates coord, int id_principi) {
         num_parades = 0;
         num_viatges = 0;
-        parades = new ArrayList<Coordinates>(0);
-        parades.add(new Coordinates(x, y));
+        parades = new ArrayList<>(0);
+        parades.add(coord);
+        id_parades = new ArrayList<>(0);
+        id_parades.add(id_principi);
     }
 
     public int GetNumParades()
@@ -33,6 +36,8 @@ public class Ruta {
         return parades.get(index);
     }
 
+    public int GetId(int index) { return id_parades.get(index); }
+
     public Boolean EsPotAfegirParadaSenseTornarAlCentreDeDistribucio()
     {
         if (parades.size() <= 2)
@@ -51,7 +56,7 @@ public class Ruta {
                 Utils.GetDistancia(coords_ultima_parada, coords_nova_parada) +
                 Utils.GetDistancia(coords_nova_parada, coords_primera_parada);
     }
-    public void AfegeixParada(Coordinates coords_nova_parada) {
+    public void AfegeixParada(Coordinates coords_nova_parada, int id) {
         Coordinates coords_primera_parada = parades.get(0);
         Coordinates coords_ultima_parada = parades.get(parades.size()-1);
         // Incrementem el nombre de viatges quan afegim una nova parada i l'anterior és el centre de distribució.
@@ -59,6 +64,7 @@ public class Ruta {
             ++num_viatges;
         }
         parades.add(coords_nova_parada);
+        id_parades.add(id);
         quilometres_recorreguts -= Utils.GetDistancia(coords_ultima_parada, coords_primera_parada);
         quilometres_recorreguts += Utils.GetDistancia(coords_ultima_parada, coords_nova_parada);
         quilometres_recorreguts += Utils.GetDistancia(coords_nova_parada, coords_primera_parada);
@@ -75,5 +81,6 @@ public class Ruta {
         quilometres_recorreguts -= Utils.GetDistancia(ultim, parades.get(parades.size()-1));
         quilometres_recorreguts -= Utils.GetDistancia(ultim, parades.get(0));
         quilometres_recorreguts += Utils.GetDistancia(parades.get(parades.size()-1), parades.get(0));
+        id_parades.remove(id_parades.size()-1);
     }
 }

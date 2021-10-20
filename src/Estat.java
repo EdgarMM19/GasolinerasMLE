@@ -28,8 +28,7 @@ public class Estat {
     // posició.
     private EstatGasolinera[] estat_gasolineres;
 
-    public Estat(@NotNull CentrosDistribucion _centres, @NotNull Gasolineras _gasolineres)
-    {
+    public Estat(@NotNull CentrosDistribucion _centres, @NotNull Gasolineras _gasolineres) {
         num_centres = _centres.size();
         centres = _centres;
         num_gasolineres = _gasolineres.size();
@@ -70,7 +69,7 @@ public class Estat {
         // mogut del centre.
         rutes = new Ruta[num_centres];
         for (int i = 0; i < num_centres; ++i) {
-            rutes[i] = new Ruta(centres.get(i).getCoordX(), centres.get(i).getCoordY());
+            rutes[i] = new Ruta(Coordinates.GetCoordsCentre(centres.get(i)), i);
         }
     }
 
@@ -145,6 +144,7 @@ public class Estat {
         }
         return gasolinera_mes_propera;
     }
+
     public void CreaEstatPropers() {
         // Ens basarem en assignar sempre el camió que està més proper a una gasolinera en cada moment.
         // Per això tenim una cua on fiquem la informació sobre: camió, distància a la gasolinera on es vol dirigir,
@@ -205,16 +205,16 @@ public class Estat {
                 }
                 else
                 {
-                    rutes[act.camio].AfegeixParada(Coordinates.GetCoordsCentre(centres.get(act.camio)));
+                    rutes[act.camio].AfegeixParada(Coordinates.GetCoordsCentre(centres.get(act.camio)), act.camio);
                 }
             }
             else
             {
-                rutes[act.camio].AfegeixParada(Coordinates.GetCoordsGasolinera(gasolineres.get(gasolinera)));
+                rutes[act.camio].AfegeixParada(Coordinates.GetCoordsGasolinera(gasolineres.get(gasolinera)), num_centres+gasolinera);
                 estat_gasolineres[gasolinera].CamioArribat(act.camio);
                 int propera_posicio;
                 if (!rutes[act.camio].EsPotAfegirParadaSenseTornarAlCentreDeDistribucio()) {
-                    rutes[act.camio].AfegeixParada(Coordinates.GetCoordsCentre(centres.get(act.camio)));
+                    rutes[act.camio].AfegeixParada(Coordinates.GetCoordsCentre(centres.get(act.camio)), act.camio);
                     propera_posicio = act.camio;
                     if (rutes[act.camio].GetNumViatges() == max_num_viatges)
                     {
@@ -234,7 +234,7 @@ public class Estat {
                     pq.add(new Tuple(act.camio, GetDistanciaEntreNodeIGasolinera(propera_posicio, gasolinera_propera), rutes[act.camio].GetNumParades(), propera_posicio));
                 }
                 else {
-                    rutes[act.camio].AfegeixParada(Coordinates.GetCoordsCentre(centres.get(act.camio)));
+                    rutes[act.camio].AfegeixParada(Coordinates.GetCoordsCentre(centres.get(act.camio)), act.camio);
                 }
             }
         }
