@@ -91,7 +91,7 @@ public class Estat {
     {
         return rutes;
     }
-    public int AvaluaFuncioHeuristica(){
+    public int AvaluaFuncioHeuristicaBeneficis(){
         int cost_quilometres_totals = 0;
         int diners_cobrats = 0;
         int diners_perduts = 0;
@@ -128,13 +128,13 @@ public class Estat {
         // La funcio heuristica s'ha de minimitzar. Canviem el signe.
         return - (diners_cobrats - cost_quilometres_totals - diners_perduts);
     }
+
     public void CreaEstatInicialBuit()
     {
         // Com mostra el nom l'estat inicial és aquell on no hi ha res assignat.
     }
 
-    private int GetGasolineraDisponibleMesPropera(int index)
-    {
+    private int GetGasolineraDisponibleMesPropera(int index) {
         int gasolinera_mes_propera = -1;
         for (int i = 0; i < num_gasolineres; ++i) {
             if (!estat_gasolineres[i].GasolineraSatisfeta() &&
@@ -145,8 +145,7 @@ public class Estat {
         }
         return gasolinera_mes_propera;
     }
-    public void CreaEstatPropers()
-    {
+    public void CreaEstatPropers() {
         // Ens basarem en assignar sempre el camió que està més proper a una gasolinera en cada moment.
         // Per això tenim una cua on fiquem la informació sobre: camió, distància a la gasolinera on es vol dirigir,
         // nombre de viatge que estaria fent.
@@ -241,5 +240,8 @@ public class Estat {
                 }
             }
         }
+    }
+    public ArrayList<Estat> GetSuccessors() {
+        return new ArrayList<>();
     }
 }
