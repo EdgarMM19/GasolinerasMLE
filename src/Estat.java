@@ -143,6 +143,62 @@ public class Estat {
         return -(diners_cobrats - cost_quilometres_totals - diners_perduts);
     }
 
+
+    public int AvaluaFuncioHeuristicaDipositsServits() {
+        int num_diposits_servits = 0;
+        for (int i = 0; i < num_gasolineres; ++i) {
+            Gasolinera g = gasolineres.get(i);
+            ArrayList<Integer> p = g.getPeticiones();
+            int num_diposits = p.size();
+            for (int j = 0; j < num_diposits; ++j) {
+                if (estat_gasolineres[i].GetAssignacioDiposit()[j] != -1) ++num_diposits_servits;
+            }
+        }
+
+        // La funció heurística s'ha de minimitzar. Canviem el signe.
+        return  - num_diposits_servits;
+    }
+
+    public int AvaluaFuncioHeuristicaQuilometresEntreDiposits() {
+        int quilometres_totals = 0;
+        int num_diposits_servits = 0;
+        for (int i = 0; i < num_centres; ++i) {
+            quilometres_totals += rutes[i].GetQuilometresRecorreguts();
+        }
+        for (int i = 0; i < num_gasolineres; ++i) {
+            Gasolinera g = gasolineres.get(i);
+            ArrayList<Integer> p = g.getPeticiones();
+            int num_diposits = p.size();
+            for (int j = 0; j < num_diposits; ++j) {
+                if (estat_gasolineres[i].GetAssignacioDiposit()[j] != -1) ++num_diposits_servits;
+            }
+        }
+        return quilometres_totals/num_diposits_servits;
+    }
+
+    public int AvaluaFuncioHeuristicaPercentatgePerdut(){
+        int percentatge_perdut_total = 0;
+
+        for (int i = 0; i < num_gasolineres; ++i) {
+            Gasolinera g = gasolineres.get(i);
+            ArrayList<Integer> p = g.getPeticiones();
+            int num_diposits = p.size();
+            for (int j = 0; j < num_diposits; ++j) {
+                if ( estat_gasolineres[i].GetAssignacioDiposit()[j] == -1) {
+                    // percentatge_perdut = (100 - 2^d) - (100 - 2^(d+1)) = 2^d
+                    int percentatge_perdut;
+                    if (p.get(j) == 0) {
+                        percentatge_perdut = 4;
+                    } else {
+                        percentatge_perdut = 1 << p.get(j);
+                    }
+                    percentatge_perdut_total += percentatge_perdut;
+                }
+            }
+        }
+        return percentatge_perdut_total;
+    }
+
     public void CreaEstatInicialBuit() {
         // Com mostra el nom l'estat inicial és aquell on no hi ha res assignat.
     }
