@@ -5,10 +5,13 @@ import IA.Gasolina.Gasolinera;
 public class Coordinates {
     private int x;
     private int y;
-    public Coordinates(int _x, int _y)
-    {
+    public Coordinates(int _x, int _y) {
         x = _x;
         y = _y;
+    }
+    public Coordinates(Coordinates antic) {
+        this.x = antic.x;
+        this.y = antic.y;
     }
     public void SetX(int _x)
     {

@@ -26,9 +26,7 @@ public class MainAima {
                 new GasolineraHeuristicFunction());
 
         // Instantiate the search algorithm
-        // AStarSearch(new GraphSearch()) or IterativeDeepeningAStarSearch()
         Search search = new HillClimbingSearch();
-        //Search alg = new IterativeDeepeningAStarSearch();
 
         // Instantiate the SearchAgent object
         SearchAgent agent = new SearchAgent(p, search);

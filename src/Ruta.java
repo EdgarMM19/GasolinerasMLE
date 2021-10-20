@@ -20,6 +20,17 @@ public class Ruta {
         id_parades.add(id_principi);
     }
 
+    public Ruta(Ruta antic) {
+        this.num_viatges = antic.num_viatges;
+        this.num_parades = antic.num_parades;
+        this.parades = new ArrayList<>();
+        for (int i = 0; i < antic.parades.size(); ++i) {
+            this.parades.add(new Coordinates(antic.parades.get(i)));
+        }
+        this.id_parades = new ArrayList<>();
+        this.id_parades.addAll(antic.id_parades);
+        this.quilometres_recorreguts = antic.quilometres_recorreguts;
+    }
     public int GetNumParades()
     {
         return num_parades;
@@ -66,7 +77,7 @@ public class Ruta {
         Coordinates coords_primera_parada = parades.get(0);
         Coordinates coords_ultima_parada = parades.get(parades.size()-1);
         // Incrementem el nombre de viatges quan afegim una nova parada i l'anterior és el centre de distribució.
-        if (Objects.equals(id_parades.get(id), id_parades.get(id_parades.size() - 1))) {
+        if (Objects.equals(id_parades.get(0), id_parades.get(id_parades.size() - 1))) {
             ++num_viatges;
         }
         parades.add(coords_nova_parada);

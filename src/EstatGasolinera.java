@@ -20,6 +20,12 @@ public class EstatGasolinera {
         Arrays.fill(assignacio_diposit, -1);
     }
 
+    public EstatGasolinera(EstatGasolinera antic) {
+        this.assignacio_diposit = antic.assignacio_diposit.clone();
+        this.numero_peticions = antic.numero_peticions;
+        this.numero_peticions_satisfetes = antic.numero_peticions_satisfetes;
+        this.gasolinera = antic.gasolinera;
+    }
     public int[] GetAssignacioDiposit()
     {
         return assignacio_diposit;
