@@ -84,6 +84,7 @@ public class Estat {
     static public int GetDistanciaEntreGasolineres(int g1, int g2) {
         return distancies[num_centres + g1][num_centres + g2];
     }
+
     static public int GetDistanciaEntreNodeIGasolinera(int n, int g) { return distancies[n][num_centres+g]; }
 
     static public int GetDistanciaEntreNodeICentre(int n, int c) { return distancies[n][c]; }
@@ -92,6 +93,7 @@ public class Estat {
     {
         return rutes;
     }
+
     public int AvaluaFuncioHeuristicaBeneficis(){
         int cost_quilometres_totals = 0;
         int diners_cobrats = 0;
@@ -130,8 +132,7 @@ public class Estat {
         return -(diners_cobrats - cost_quilometres_totals - diners_perduts);
     }
 
-    public void CreaEstatInicialBuit()
-    {
+    public void CreaEstatInicialBuit() {
         // Com mostra el nom l'estat inicial és aquell on no hi ha res assignat.
     }
 

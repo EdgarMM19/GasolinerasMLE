@@ -39,6 +39,10 @@ public class Ruta {
 
     public int GetId(int index) { return id_parades.get(index); }
 
+    public int GetLastId() { return id_parades.get(id_parades.size()-1); }
+
+    public Coordinates GetLastCoordinates() { return parades.get(parades.size()-1); }
+
     public Boolean EsPotAfegirParadaSenseTornarAlCentreDeDistribucio()
     {
         if (parades.size() <= 2)
@@ -53,15 +57,16 @@ public class Ruta {
     {
         Coordinates coords_primera_parada = parades.get(0);
         Coordinates coords_ultima_parada = parades.get(parades.size()-1);
-        return quilometres_recorreguts - Utils.GetDistancia(coords_ultima_parada, coords_primera_parada) +
-                Utils.GetDistancia(coords_ultima_parada, coords_nova_parada) +
-                Utils.GetDistancia(coords_nova_parada, coords_primera_parada);
+        return quilometres_recorreguts - Utils.GetDistancia(coords_ultima_parada, coords_primera_parada)
+                + Utils.GetDistancia(coords_ultima_parada, coords_nova_parada)
+                + Utils.GetDistancia(coords_nova_parada, coords_primera_parada);
     }
+
     public void AfegeixParada(Coordinates coords_nova_parada, int id) {
         Coordinates coords_primera_parada = parades.get(0);
         Coordinates coords_ultima_parada = parades.get(parades.size()-1);
         // Incrementem el nombre de viatges quan afegim una nova parada i l'anterior és el centre de distribució.
-        if (coords_primera_parada.EqualsCoordinates(coords_ultima_parada)) {
+        if (Objects.equals(id_parades.get(id), id_parades.get(id_parades.size() - 1))) {
             ++num_viatges;
         }
         parades.add(coords_nova_parada);
