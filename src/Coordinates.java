@@ -30,6 +30,8 @@ public class Coordinates {
     {
         return coordinates.GetX() == GetX() && coordinates.GetY() == GetY();
     }
+
+    // TODO(maria): aquestes dues funcions no poden estar a la classe Coordinates, s'haurien de moure a Utils
     static public Coordinates GetCoordsGasolinera(Gasolinera gasolinera)
     {
         return new Coordinates(gasolinera.getCoordX(), gasolinera.getCoordY());

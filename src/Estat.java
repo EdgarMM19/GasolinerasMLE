@@ -86,6 +86,8 @@ public class Estat {
     }
     static public int GetDistanciaEntreNodeIGasolinera(int n, int g) { return distancies[n][num_centres+g]; }
 
+    static public int GetDistanciaEntreNodeICentre(int n, int c) { return distancies[n][c]; }
+
     public Ruta[] GetRutes()
     {
         return rutes;
@@ -104,14 +106,14 @@ public class Estat {
             ArrayList<Integer> p = g.getPeticiones();
             int num_diposits = p.size();
             for (int j = 0; j < num_diposits; ++j) {
-                if ( estat_gasolineres[i].GetAssignacioDiposit()[j] != -1) {
+                if (estat_gasolineres[i].GetAssignacioDiposit()[j] != -1) {
                     int percentatge;
                     if (p.get(j) == 0) {
                         percentatge = 102;
                     } else {
                         percentatge = 100 - (1 << p.get(j));
                     }
-                    diners_cobrats += valor_diposit*percentatge;
+                    diners_cobrats += valor_diposit * percentatge;
                 } else {
                     // percentatge_perdut = (100 - 2^d) - (100 - 2^(d+1)) = 2^d
                     int percentatge_perdut;
@@ -120,12 +122,12 @@ public class Estat {
                     } else {
                         percentatge_perdut = 1 << p.get(j);
                     }
-                    diners_perduts += valor_diposit*percentatge_perdut;
+                    diners_perduts += valor_diposit * percentatge_perdut;
                 }
             }
         }
         // La funcio heuristica s'ha de minimitzar. Canviem el signe.
-        return - (diners_cobrats - cost_quilometres_totals - diners_perduts);
+        return -(diners_cobrats - cost_quilometres_totals - diners_perduts);
     }
 
     public void CreaEstatInicialBuit()
@@ -143,6 +145,29 @@ public class Estat {
             }
         }
         return gasolinera_mes_propera;
+    }
+
+    public Boolean EsPotAfegirViatge(Ruta ruta, Coordinates coordinates)
+    {
+        if (!ruta.EsPotAfegirParadaSenseTornarAlCentreDeDistribucio()) {
+            ruta.AfegeixParadaAlCentreDeDistribucio();
+        }
+        if (ruta.GetLastCoordinates() == coordinates && ruta.GetNumViatges() == max_num_viatges) {
+            return false;
+        }
+        return ruta.QuilometresViatgeITornadaAlCentre(coordinates) <= max_quilometres;
+    }
+
+    private int GetCentreDisponibleMesProper(int index) {
+        int centre_mes_proper = -1;
+        for (int i = 0; i < num_centres; ++i) {
+            if (EsPotAfegirViatge(rutes[i], Coordinates.GetCoordsGasolinera(gasolineres.get(index))) &&
+                    (centre_mes_proper == -1 ||
+                            GetDistanciaEntreNodeICentre(index,i) < GetDistanciaEntreNodeICentre(index, centre_mes_proper))) {
+                centre_mes_proper = i;
+            }
+        }
+        return centre_mes_proper;
     }
 
     public void CreaEstatPropers() {
@@ -239,7 +264,62 @@ public class Estat {
             }
         }
     }
+
+    public void BorraRutaCentre(int index)
+    {
+        while(rutes[index].GetNumParades() != 0) {
+            BorraUltimViatgeCentre(index);
+        }
+    }
+
+    public void BorraUltimViatgeCentre(int index)
+    {
+        int gasolinera = rutes[index].GetId(rutes[index].GetNumParades());
+        if (gasolinera >= num_centres) {
+            estat_gasolineres[gasolinera-num_centres].CamioMarxat(index);
+        }
+        rutes[index].EliminaParada();
+    }
+
+    public void EmplenaCentre(int index)
+    {
+        while(AfegeixViatgeCentre(index));
+    }
+
+    public Boolean AfegeixViatgeCentre(int index)
+    {
+        if (!rutes[index].EsPotAfegirParadaSenseTornarAlCentreDeDistribucio())
+        {
+            rutes[index].AfegeixParada(Coordinates.GetCoordsCentre(centres.get(index)), index);
+        }
+        if (rutes[index].GetLastId() == index && rutes[index].GetNumViatges() == max_num_viatges)
+            return false;
+        int gasolinera = GetGasolineraDisponibleMesPropera(rutes[index].GetLastId());
+        Coordinates coords_gasolinera = Coordinates.GetCoordsGasolinera(gasolineres.get(gasolinera));
+        if (rutes[index].QuilometresViatgeITornadaAlCentre(coords_gasolinera) <= max_quilometres) {
+            rutes[index].AfegeixParada(coords_gasolinera, num_centres+gasolinera);
+            estat_gasolineres[gasolinera].CamioArribat(index);
+            return true;
+        }
+        return false;
+    }
+
+    public void AfegeixViatgeGasolinera(int index)
+    {
+        if (!estat_gasolineres[index].GasolineraSatisfeta()) {
+            int index_centre = GetCentreDisponibleMesProper(index);
+            if (index_centre != -1) {
+                Coordinates coordinates_gasolinera = Coordinates.GetCoordsGasolinera(gasolineres.get(index));
+                if (EsPotAfegirViatge(rutes[index_centre], coordinates_gasolinera)) {
+                    rutes[index_centre].AfegeixParada(coordinates_gasolinera, num_centres + index);
+                    estat_gasolineres[index].CamioArribat(index_centre);
+                }
+            }
+        }
+    }
+
     public ArrayList<Estat> GetSuccessors() {
+
         return new ArrayList<>();
     }
 }

@@ -5,6 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb830d75-21ec-421e-a284-4e5c83833e1e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GasolinerasMLE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/GasolinerasMLE.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Coordinates.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Coordinates.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1Tuple.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1Tuple.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1TupleComparer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1TupleComparer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/EstatGasolinera.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/EstatGasolinera.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Ruta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Ruta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Coordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Estat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ruta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ruta.java" afterDir="false" />
+    </list>
+    <list id="33138c10-2105-4a70-94e2-63651b567969" name="Changes by edgar" comment="">
       <change beforePath="$PROJECT_DIR$/src/Estat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ruta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ruta.java" afterDir="false" />
     </list>
@@ -31,6 +44,33 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/Estat.java">
+      <ranges>
+        <range start1="86" end1="86" start2="86" end2="87" changelist="33138c10-2105-4a70-94e2-63651b567969" />
+        <range start1="88" end1="88" start2="89" end2="91" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
+        <range start1="92" end1="92" start2="95" end2="96" changelist="33138c10-2105-4a70-94e2-63651b567969" />
+        <range start1="106" end1="107" start2="110" end2="111" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
+        <range start1="113" end1="114" start2="117" end2="118" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
+        <range start1="122" end1="123" start2="126" end2="127" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
+        <range start1="127" end1="128" start2="131" end2="132" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
+        <range start1="130" end1="132" start2="134" end2="135" changelist="33138c10-2105-4a70-94e2-63651b567969" />
+        <range start1="146" end1="146" start2="149" end2="175" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
+        <range start1="241" end1="241" start2="270" end2="324" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
+        <range start1="242" end1="242" start2="325" end2="326" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/Ruta.java">
+      <ranges>
+        <range start1="40" end1="40" start2="40" end2="44" changelist="33138c10-2105-4a70-94e2-63651b567969" />
+        <range start1="54" end1="57" start2="58" end2="61" changelist="33138c10-2105-4a70-94e2-63651b567969" />
+        <range start1="58" end1="58" start2="62" end2="63" changelist="33138c10-2105-4a70-94e2-63651b567969" />
+        <range start1="62" end1="63" start2="67" end2="68" changelist="33138c10-2105-4a70-94e2-63651b567969" />
+        <range start1="72" end1="72" start2="77" end2="82" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
+        <range start1="80" end1="80" start2="90" end2="91" changelist="bb830d75-21ec-421e-a284-4e5c83833e1e" />
+      </ranges>
+    </file>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedIndex" value="1" />
@@ -105,6 +145,7 @@
       <workItem from="1634562134764" duration="1253000" />
       <workItem from="1634563533516" duration="9298000" />
       <workItem from="1634588853558" duration="15808000" />
+      <workItem from="1634735107225" duration="5432000" />
     </task>
     <servers />
   </component>

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Ruta {
     // Un camió cisterna sempre comença i acaba al mateix centre de distribució. Per això, obviem incloure el centre de
@@ -70,6 +71,11 @@ public class Ruta {
         quilometres_recorreguts += Utils.GetDistancia(coords_nova_parada, coords_primera_parada);
         ++num_parades;
     }
+
+    public void AfegeixParadaAlCentreDeDistribucio() {
+        AfegeixParada(parades.get(0), id_parades.get(0));
+    }
+
     public void EliminaParada() {
         if (parades.size() == 1) return;
         Coordinates ultim = parades.remove(parades.size()-1);
@@ -78,6 +84,7 @@ public class Ruta {
         if (parades.get(parades.size()-1).EqualsCoordinates(parades.get(0))){
             num_viatges--;
         }
+        // TODO(maria): abstreure actualitzacio quilometres
         quilometres_recorreguts -= Utils.GetDistancia(ultim, parades.get(parades.size()-1));
         quilometres_recorreguts -= Utils.GetDistancia(ultim, parades.get(0));
         quilometres_recorreguts += Utils.GetDistancia(parades.get(parades.size()-1), parades.get(0));
