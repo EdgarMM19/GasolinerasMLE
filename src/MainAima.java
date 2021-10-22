@@ -1,10 +1,8 @@
 import IA.Gasolina.CentrosDistribucion;
 import IA.Gasolina.Gasolineras;
-import aima.search.framework.GraphSearch;
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
-import aima.search.informed.AStarSearch;
 import aima.search.informed.HillClimbingSearch;
 
 import java.util.Iterator;
@@ -17,13 +15,13 @@ public class MainAima {
         Gasolineras s = new Gasolineras(100, 1234);
         CentrosDistribucion c = new CentrosDistribucion(10, 1, 1234);
         Estat estat = new Estat(c, s);
-        estat.CreaEstatPropers();
+        estat.generaAssignacioInicial1();
 
         // Create the Problem object
         Problem p = new Problem(estat,
                 new GasolineraSuccesorFunction(),
                 new GasolineraGoalTest(),
-                new GasolineraHeuristicFunction());
+                new GasolineraHeuristicFunction1());
 
         // Instantiate the search algorithm
         Search search = new HillClimbingSearch();
@@ -36,7 +34,8 @@ public class MainAima {
         printActions(agent.getActions());
         printInstrumentation(agent.getInstrumentation());
 
-
+        System.out.println();
+        System.out.print(((Estat) search.getGoalState()).resultatsToString());
     }
 
     private static void printInstrumentation(Properties properties) {

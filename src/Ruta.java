@@ -1,5 +1,6 @@
+import IA.Gasolina.Distribucion;
+
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Ruta {
     // Un camió cisterna sempre comença i acaba al mateix centre de distribució. Per això, obviem incloure el centre de
@@ -7,103 +8,111 @@ public class Ruta {
     // primera posició.
     private int num_viatges;
     private int num_parades;
-    private ArrayList<Coordinates> parades;
-    private ArrayList<Integer> id_parades;
+    private ArrayList<Parada> parades;
     private int quilometres_recorreguts;
 
-    public Ruta(Coordinates coord, int id_principi) {
+    // La primera parada d'una ruta ha de ser un centre.
+    public Ruta(Distribucion centre, int index_centre) {
         num_parades = 0;
         num_viatges = 0;
-        parades = new ArrayList<>(0);
-        parades.add(coord);
-        id_parades = new ArrayList<>(0);
-        id_parades.add(id_principi);
+        parades = new ArrayList<>();
+        parades.add(new Parada(Utils.getCoordinates(centre), index_centre));
+        quilometres_recorreguts = 0;
     }
 
-    public Ruta(Ruta antic) {
-        this.num_viatges = antic.num_viatges;
-        this.num_parades = antic.num_parades;
+    public Ruta(Ruta ruta) {
+        this.num_viatges = ruta.num_viatges;
+        this.num_parades = ruta.num_parades;
         this.parades = new ArrayList<>();
-        for (int i = 0; i < antic.parades.size(); ++i) {
-            this.parades.add(new Coordinates(antic.parades.get(i)));
+        for (int i = 0; i < ruta.parades.size(); ++i) {
+            this.parades.add(new Parada(ruta.parades.get(i)));
         }
-        this.id_parades = new ArrayList<>();
-        this.id_parades.addAll(antic.id_parades);
-        this.quilometres_recorreguts = antic.quilometres_recorreguts;
+        this.quilometres_recorreguts = ruta.quilometres_recorreguts;
     }
-    public int GetNumParades()
+    public int getNumParades()
     {
         return num_parades;
     }
 
-    public int GetNumViatges() { return num_viatges; }
+    public int getNumViatges() { return num_viatges; }
 
-    public int GetQuilometresRecorreguts()
-    {
-        return quilometres_recorreguts;
-    }
-
-    public Coordinates GetCoordinates(int index)
+    public Parada getParada(int index)
     {
         return parades.get(index);
     }
 
-    public int GetId(int index) { return id_parades.get(index); }
-
-    public int GetLastId() { return id_parades.get(id_parades.size()-1); }
-
-    public Coordinates GetLastCoordinates() { return parades.get(parades.size()-1); }
-
-    public Boolean EsPotAfegirParadaSenseTornarAlCentreDeDistribucio()
+    public Parada getCentre()
     {
-        if (parades.size() <= 2)
-        {
-            return true;
-        }
-        return parades.get(parades.size() - 1).EqualsCoordinates(parades.get(0)) ||
-                parades.get(parades.size() - 2).EqualsCoordinates(parades.get(0));
+        return getParada(0);
     }
 
-    public int QuilometresViatgeITornadaAlCentre(Coordinates coords_nova_parada)
+    public Parada getUltimaParada() { return getParada(parades.size() - 1); }
+
+    public Parada getPenultimaParada() { return getParada(parades.size() - 2); }
+
+    public int getQuilometresRecorreguts()
     {
-        Coordinates coords_primera_parada = parades.get(0);
-        Coordinates coords_ultima_parada = parades.get(parades.size()-1);
-        return quilometres_recorreguts - Utils.GetDistancia(coords_ultima_parada, coords_primera_parada)
-                + Utils.GetDistancia(coords_ultima_parada, coords_nova_parada)
-                + Utils.GetDistancia(coords_nova_parada, coords_primera_parada);
+        return quilometres_recorreguts;
     }
 
-    public void AfegeixParada(Coordinates coords_nova_parada, int id) {
-        Coordinates coords_primera_parada = parades.get(0);
-        Coordinates coords_ultima_parada = parades.get(parades.size()-1);
-        // Incrementem el nombre de viatges quan afegim una nova parada i l'anterior és el centre de distribució.
-        if (Objects.equals(id_parades.get(0), id_parades.get(id_parades.size() - 1))) {
+    public boolean esCentre(Parada parada) {
+        return parada.equals(getCentre());
+    }
+
+    /**
+     * Retorna els quilometres que s'afegirien als recorreguts si es fes p1 -> p2 -> p3 enlloc de p1 -> p3.
+     */
+    public int getQuilometresParadaIntermitja(Parada p1, Parada p2, Parada p3) {
+        return Utils.getDistancia(p1, p2) + Utils.getDistancia(p2, p3) - Utils.getDistancia(p1, p3);
+    }
+
+    public void afegeixParada(Parada parada) {
+        ++num_parades;
+        // Incrementem el nombre de viatges si l'ultima parada es el centre.
+        if (esCentre(getUltimaParada())) {
             ++num_viatges;
         }
-        parades.add(coords_nova_parada);
-        id_parades.add(id);
-        quilometres_recorreguts -= Utils.GetDistancia(coords_ultima_parada, coords_primera_parada);
-        quilometres_recorreguts += Utils.GetDistancia(coords_ultima_parada, coords_nova_parada);
-        quilometres_recorreguts += Utils.GetDistancia(coords_nova_parada, coords_primera_parada);
-        ++num_parades;
+        quilometres_recorreguts += getQuilometresParadaIntermitja(getUltimaParada(), parada, getCentre());
+        parades.add(parada);
     }
 
-    public void AfegeixParadaAlCentreDeDistribucio() {
-        AfegeixParada(parades.get(0), id_parades.get(0));
+    public void afegeixParadaAlCentre() {
+        afegeixParada(getCentre());
     }
 
-    public void EliminaParada() {
+    public void eliminaParada() {
         if (parades.size() == 1) return;
-        Coordinates ultim = parades.remove(parades.size()-1);
-        num_parades--;
-        // Si començava un viatge s'ha d'eliminar.
-        if (parades.get(parades.size()-1).EqualsCoordinates(parades.get(0))){
-            num_viatges--;
+        Parada parada_eliminada = parades.remove(parades.size() - 1);
+        --num_parades;
+        // Si era la primera parada d'un nou viatge, disminuïm el nombre de viatges.
+        if (esCentre(getUltimaParada())) {
+            --num_viatges;
         }
-        // TODO(maria): abstreure actualitzacio quilometres
-        quilometres_recorreguts -= Utils.GetDistancia(ultim, parades.get(parades.size()-1));
-        quilometres_recorreguts -= Utils.GetDistancia(ultim, parades.get(0));
-        quilometres_recorreguts += Utils.GetDistancia(parades.get(parades.size()-1), parades.get(0));
-        id_parades.remove(id_parades.size()-1);
+        quilometres_recorreguts -= getQuilometresParadaIntermitja(getUltimaParada(), parada_eliminada, getCentre());
+    }
+
+    public boolean calTornarAlCentre() {
+        if (parades.size() <= 2) {
+            return false;
+        }
+        return !esCentre(getUltimaParada()) && !esCentre(getPenultimaParada());
+    }
+
+    public void buida() {
+        num_parades = 0;
+        num_viatges = 0;
+        Parada centre = new Parada(getCentre());
+        parades = new ArrayList<>();
+        parades.add(centre);
+        quilometres_recorreguts = 0;
+    }
+
+    public boolean haAcabat() {
+        return num_viatges == Estat.max_num_viatges;
+    }
+
+    public boolean podriaViatjar(Parada parada) {
+        return quilometres_recorreguts + getQuilometresParadaIntermitja(getUltimaParada(), parada, getCentre()) <=
+                Estat.max_quilometres;
     }
 }
