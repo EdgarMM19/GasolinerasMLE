@@ -54,8 +54,7 @@ public class EstatGasolinera {
         int peticio = -1;
         int dies_peticio = -1;
         for (int i = 0; i < num_peticions; ++i) {
-            if (assignacio_peticions[i] == -1 ||
-                    (assignacio_peticions[i] != -1 && gasolinera.getPeticiones().get(i) > dies_peticio)) {
+            if (assignacio_peticions[i] == -1 && gasolinera.getPeticiones().get(i) > dies_peticio) {
                 peticio = i;
                 dies_peticio = gasolinera.getPeticiones().get(i);
             }
@@ -70,32 +69,21 @@ public class EstatGasolinera {
     }
 
     /*
-    // TODO(maria): refactoritzar aquesta funcio
-    public void CamioMarxat(int camio) {
-        int diposit_agafat = -1, dies_diposit = -1;
-        for (int i = 0; i < numero_peticions; ++i) {
-            if (assignacio_diposit[i] == camio && (dies_diposit == -1 || gasolinera.getPeticiones().get(i) < dies_diposit)) {
-                diposit_agafat = i;
-                dies_diposit = gasolinera.getPeticiones().get(i);
+     * Esborra el servei de la peticio mes recent fet pel centre donat.
+     */
+    public void esborraServei(int index_centre) {
+        int peticio = -1;
+        int dies_peticio = -1;
+        for (int i = 0; i < num_peticions; ++i) {
+            if (assignacio_peticions[i] == index_centre && (dies_peticio == -1 || gasolinera.getPeticiones().get(i) < dies_peticio)) {
+                peticio = i;
+                dies_peticio = gasolinera.getPeticiones().get(i);
             }
         }
-        if (diposit_agafat == -1) return;
-        numero_peticions_satisfetes--;
-        assignacio_diposit[diposit_agafat] = -1;
-        int diposit_canviar = -1, dies_diposit_canvi = dies_diposit;
-        for (int i = 0; i < numero_peticions; ++i) {
-            if (assignacio_diposit[i] != -1 && gasolinera.getPeticiones().get(i) < dies_diposit_canvi)
-            {
-                dies_diposit_canvi = gasolinera.getPeticiones().get(i);
-                diposit_canviar = i;
-            }
-        }
-        if (diposit_canviar != -1) {
-             assignacio_diposit[diposit_agafat] = assignacio_diposit[diposit_canviar];
-             assignacio_diposit[diposit_canviar] = -1;
+        if (peticio != -1) {
+            --num_peticions_servides;
+            assignacio_peticions[peticio] = -1;
         }
     }
-
-     */
 
 }

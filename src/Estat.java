@@ -201,6 +201,20 @@ public class Estat {
         return true;
     }
 
+    public void esborraUltimViatge(int index_centre)
+    {
+        if (rutes[index_centre].getNumViatges() > 0) {
+            if (rutes[index_centre].getUltimaParada().equals(rutes[index_centre].getCentre())) {
+                rutes[index_centre].eliminaParada();
+            }
+            while (!rutes[index_centre].getUltimaParada().equals(rutes[index_centre].getCentre())) {
+                int index_gasolinera = rutes[index_centre].getUltimaParada().getIndex();
+                estat_gasolineres[index_gasolinera].esborraServei(index_centre);
+                rutes[index_centre].eliminaParada();
+            }
+        }
+    }
+
     /* Intenta completar el viatge del camio cisterna del centre donat. El viatge s'ha de poder completar. */
     public void completaViatge(int index_centre) {
         if (!rutes[index_centre].calTornarAlCentre()) {
@@ -323,20 +337,6 @@ public class Estat {
             }
         }
         return centre_mes_proper;
-    }
-
-    public void BorraUltimViatgeCentre(int index)
-    {
-        int gasolinera = rutes[index].GetId(rutes[index].GetNumParades());
-        if (gasolinera >= num_centres) {
-            estat_gasolineres[gasolinera-num_centres].CamioMarxat(index);
-        }
-        rutes[index].EliminaParada();
-    }
-
-    public void EmplenaCentre(int index)
-    {
-        while(AfegeixViatgeCentre(index));
     }
 
     public Boolean AfegeixViatgeGasolinera(int index)
