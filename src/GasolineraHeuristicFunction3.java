@@ -19,8 +19,7 @@ public class GasolineraHeuristicFunction3 extends GasolineraHeuristic {
         for (int i = 0; i < Estat.getNumGasolineres(); ++i) {
             num_diposits_servits += dist.getNumPeticionsServides(i);
         }
-
-        return ((double)quilometres_recorreguts/num_diposits_servits);
+        return (double)quilometres_recorreguts/num_diposits_servits;
     }
 }
 

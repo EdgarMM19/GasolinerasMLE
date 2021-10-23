@@ -35,7 +35,7 @@ public class MainAima {
         printInstrumentation(agent.getInstrumentation());
 
         System.out.println();
-        System.out.print(((Estat) search.getGoalState()).resultatsToString());
+        ((Estat) search.getGoalState()).printResultats();
     }
 
     private static void printInstrumentation(Properties properties) {

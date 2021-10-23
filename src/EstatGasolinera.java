@@ -6,7 +6,7 @@ public class EstatGasolinera {
     // Conté l'índex del centre de distribució assignat a cadascun dels dipòsits d'una gasolinera.
     // Si un dipòsit no té centre de distribució assignat, hi ha -1 a la seva posició.
     private final Gasolinera gasolinera;
-    private int num_peticions;
+    private final int num_peticions;
     private int num_peticions_servides;
     private int[] assignacio_peticions;
 
@@ -26,6 +26,7 @@ public class EstatGasolinera {
         this.num_peticions = estatGasolinera.num_peticions;
         this.num_peticions_servides = estatGasolinera.num_peticions_servides;
         this.assignacio_peticions = estatGasolinera.assignacio_peticions.clone();
+        assert(num_peticions == assignacio_peticions.length);
     }
 
     /* Getters */
@@ -50,7 +51,8 @@ public class EstatGasolinera {
         return assignacio_peticions[index_peticio] != -1;
     }
 
-    public int getPeticioMesAntiga() {
+    public int getPeticioNoServidaMesAntiga() {
+        assert(estaServida());
         int peticio = -1;
         int dies_peticio = -1;
         for (int i = 0; i < num_peticions; ++i) {
@@ -65,7 +67,7 @@ public class EstatGasolinera {
     public void serveixPeticio(int index_centre) {
         assert(num_peticions > num_peticions_servides);
         ++num_peticions_servides;
-        assignacio_peticions[getPeticioMesAntiga()] = index_centre;
+        assignacio_peticions[getPeticioNoServidaMesAntiga()] = index_centre;
     }
 
     /*
@@ -86,4 +88,21 @@ public class EstatGasolinera {
         }
     }
 
+    public void printPeticions() {
+        for (int i = 0; i < num_peticions; ++i) {
+            System.out.print("Peticio amb dies ");
+            System.out.print(gasolinera.getPeticiones().get(i));
+            System.out.print(" assignada a ");
+            System.out.print(assignacio_peticions[i]);
+            System.out.println();
+        }
+    }
+
+    public void printPeticionsNoServides() {
+        for (int i = 0; i < num_peticions; ++i) {
+            if (assignacio_peticions[i] == -1) {
+                System.out.print(" " + gasolinera.getPeticiones().get(i));
+            }
+        }
+    }
 }

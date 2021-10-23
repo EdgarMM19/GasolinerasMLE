@@ -7,13 +7,11 @@ public class Ruta {
     // distribució com a una última parada. Assumirem que després de l'última parada de la ruta es retorna a la de la
     // primera posició.
     private int num_viatges;
-    private int num_parades;
     private ArrayList<Parada> parades;
     private int quilometres_recorreguts;
 
     // La primera parada d'una ruta ha de ser un centre.
     public Ruta(Distribucion centre, int index_centre) {
-        num_parades = 0;
         num_viatges = 0;
         parades = new ArrayList<>();
         parades.add(new Parada(Utils.getCoordinates(centre), index_centre));
@@ -22,19 +20,23 @@ public class Ruta {
 
     public Ruta(Ruta ruta) {
         this.num_viatges = ruta.num_viatges;
-        this.num_parades = ruta.num_parades;
         this.parades = new ArrayList<>();
         for (int i = 0; i < ruta.parades.size(); ++i) {
             this.parades.add(new Parada(ruta.parades.get(i)));
         }
         this.quilometres_recorreguts = ruta.quilometres_recorreguts;
     }
+
     public int getNumParades()
     {
-        return num_parades;
+        return parades.size();
     }
 
     public int getNumViatges() { return num_viatges; }
+
+    public ArrayList<Parada> getParades() {
+        return parades;
+    }
 
     public Parada getParada(int index)
     {
@@ -67,7 +69,7 @@ public class Ruta {
     }
 
     public void afegeixParada(Parada parada) {
-        ++num_parades;
+        assert esCentre(parada) || (parada.getIndex() >= Estat.getNumCentres());
         // Incrementem el nombre de viatges si l'ultima parada es el centre.
         if (esCentre(getUltimaParada())) {
             ++num_viatges;
@@ -83,7 +85,6 @@ public class Ruta {
     public void eliminaParada() {
         if (parades.size() == 1) return;
         Parada parada_eliminada = parades.remove(parades.size() - 1);
-        --num_parades;
         // Si era la primera parada d'un nou viatge, disminuïm el nombre de viatges.
         if (esCentre(getUltimaParada())) {
             --num_viatges;
@@ -99,7 +100,6 @@ public class Ruta {
     }
 
     public void buida() {
-        num_parades = 0;
         num_viatges = 0;
         Parada centre = new Parada(getCentre());
         parades = new ArrayList<>();
@@ -114,5 +114,18 @@ public class Ruta {
     public boolean podriaViatjar(Parada parada) {
         return quilometres_recorreguts + getQuilometresParadaIntermitja(getUltimaParada(), parada, getCentre()) <=
                 Estat.max_quilometres;
+    }
+
+    public void printRuta() {
+        System.out.print("quilometres recorreguts: " + quilometres_recorreguts);
+        System.out.print(" | " + getNumParades() + " parades:");
+        for (Parada parada : parades) {
+            if (esCentre(parada)) {
+                System.out.print(" centre");
+            } else {
+                System.out.print(" " + Estat.getReverseIndexGasolinera(parada.getIndex()));
+            }
+        }
+        System.out.println();
     }
 }

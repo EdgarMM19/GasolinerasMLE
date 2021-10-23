@@ -3,21 +3,33 @@ import IA.Gasolina.Gasolinera;
 public class Benefici {
     static public double getValor(Object estat) {
         Estat dist = (Estat) estat;
+        return getDinersCobrats(dist) - getQuilometresTotals(dist) * Estat.cost_quilometre;
+    }
+
+    public static void printBenefici(Estat estat) {
+        System.out.println("Benefici: " + getValor(estat));
+        System.out.println("Diners cobrats: " + getDinersCobrats(estat));
+        System.out.println("Cost quilometres totals: " + getQuilometresTotals(estat) * Estat.cost_quilometre);
+    }
+
+    public static int getQuilometresTotals(Estat estat) {
         int cost_quilometres_totals = 0;
-        int diners_cobrats = 0;
-
         for (int i = 0; i < Estat.getNumCentres(); ++i) {
-            cost_quilometres_totals += dist.getRuta(i).getQuilometresRecorreguts() * Estat.cost_quilometre;
+            cost_quilometres_totals += estat.getRuta(i).getQuilometresRecorreguts();
         }
+        return cost_quilometres_totals;
+    }
 
+    private static int getDinersCobrats(Estat estat) {
+        int diners_cobrats = 0;
         for (int i = 0; i < Estat.getNumGasolineres(); ++i) {
             Gasolinera gasolinera = Estat.getGasolinera(i);
             for (int j = 0; j < gasolinera.getPeticiones().size(); ++j) {
-                if (dist.haServitPeticio(i, j)) {
+                if (estat.haServitPeticio(i, j)) {
                     diners_cobrats += Estat.valor_diposit * PercentatgePreu.getGuanyat( Estat.getDiesPeticio(i, j));
                 }
             }
         }
-        return diners_cobrats - cost_quilometres_totals;
+        return diners_cobrats;
     }
 }

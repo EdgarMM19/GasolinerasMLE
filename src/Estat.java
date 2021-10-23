@@ -28,10 +28,11 @@ public class Estat {
     /* Indexadors */
 
     static public int getIndexGasolinera(int index) {
-        if (index >= num_centres) {
-            return index;
-        }
         return num_centres + index;
+    }
+
+    static public int getReverseIndexGasolinera(int index) {
+        return index - num_centres;
     }
 
     /* Constructors */
@@ -107,6 +108,35 @@ public class Estat {
         return gasolineres.get(index);
     }
 
+    /* Print */
+
+    public void printResultats() {
+        Benefici.printBenefici(this);
+        System.out.println();
+        for (int i = 0; i < num_centres; ++i) {
+            System.out.println("* Ruta del centre " + i + " *");
+            rutes[i].printRuta();
+        }
+
+        System.out.println();
+
+        for (int i = 0; i < num_gasolineres; ++i) {
+            if (!estat_gasolineres[i].estaServida()) {
+                System.out.print("La gasolinera " + i + " no te servides les peticions amb dies:");
+                estat_gasolineres[i].printPeticionsNoServides();
+                System.out.println();
+            }
+        }
+        System.out.println();
+    }
+
+    public void printAssignacionsGasolinera(int index_gasolinera) {
+        estat_gasolineres[index_gasolinera].printPeticions();
+    }
+
+
+    /* Utils */
+
     public void creaAssignacioPerDefecte() {
         estat_gasolineres = new EstatGasolinera[num_gasolineres];
         // Omplim l'assignació de dipòsits amb els valors i mides inicials.
@@ -121,13 +151,6 @@ public class Estat {
             rutes[i] = new Ruta(Estat.centres.get(i), i);
         }
     }
-
-    /* ToString */
-    public String resultatsToString() {
-        return "Benefici: " + Benefici.getValor(this);
-    }
-
-    /* Utils */
 
     public int getDistanciaEntreElements(int i, int j) {
         return distancies[i][j];
@@ -151,7 +174,7 @@ public class Estat {
             if (!estat_gasolineres[i].estaServida() &&
                     (index_gasolinera == -1 ||
                             (getDistanciaEntreElements(index, getIndexGasolinera(i)) <
-                                    getDistanciaEntreElements(index, getIndexGasolinera(index_gasolinera))))) {
+                                    getDistanciaEntreElements(index, index_gasolinera)))) {
                 index_gasolinera = i;
             }
         }
@@ -226,6 +249,11 @@ public class Estat {
     }
 
     public void esborraRutaCentre(int index_centre) {
+        for (int i = 0; i < rutes[index_centre].getParades().size(); ++i) {
+            if (!rutes[index_centre].getParada(i).equals(rutes[index_centre].getCentre())) {
+                estat_gasolineres[getReverseIndexGasolinera(rutes[index_centre].getParada(i).getIndex())].esborraServei(index_centre);
+            }
+        }
         rutes[index_centre].buida();
     }
 
