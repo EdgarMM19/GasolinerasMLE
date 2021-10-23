@@ -7,13 +7,12 @@
     <list default="true" id="bb830d75-21ec-421e-a284-4e5c83833e1e" name="Changes" comment="Fix error">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/EstatGasolinera.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/EstatGasolinera.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainAima.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainAima.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainProva.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainProva.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Ruta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Ruta.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Benefici.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Benefici.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Estat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EstatGasolinera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EstatGasolinera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GasolineraHeuristicFunction3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GasolineraHeuristicFunction3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainAima.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainAima.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainProva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainProva.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ruta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ruta.java" afterDir="false" />
     </list>
     <list id="33138c10-2105-4a70-94e2-63651b567969" name="Changes by edgar" comment="" />
     <list id="d260b005-edb7-4bcd-b9b8-b4b511ce8b0b" name="Changes by Laia" comment="" />
@@ -132,7 +131,7 @@
       <workItem from="1634808730975" duration="28912000" />
       <workItem from="1634916064720" duration="95000" />
       <workItem from="1634918380948" duration="30000" />
-      <workItem from="1634983338961" duration="11100000" />
+      <workItem from="1634983338961" duration="12809000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor">
       <created>1634861757063</created>
@@ -148,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634863843601</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fix error">
+      <created>1634999148048</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1634999148048</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

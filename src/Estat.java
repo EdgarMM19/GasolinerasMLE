@@ -351,6 +351,12 @@ public class Estat {
         }
     }
 
+    private void emplenaAssignacionsGasolinera(int j) {
+    }
+
+    private void esborraAssignacionsGasolinera(int i) {
+    }
+
     // TODO(maria): refactoritzar
 
     /*
@@ -406,6 +412,19 @@ public class Estat {
                 successor.emplenaRutaCentre(i);
                 successor.emplenaRutaCentre(j);
                 successors.add(successor);
+            }
+        }
+        /* Generem un nou successor per cada parella de gasolineres. El successor es l'estat resultant d'esborrar
+         * les assignacions de les dues gasolineres i tornar-les a emplenar amb els centres disponibles mes propers. */
+        for (int i = 0; i < num_gasolineres; ++i) {
+            for (int j = 0; j < num_gasolineres; ++j) {
+                if (i == j) continue;
+                // Estat successor = new Estat(this);
+                // successor.esborraAssignacionsGasolinera(i);
+                // successor.esborraAssignacionsGasolinera(j);
+                // successor.emplenaAssignacionsGasolinera(i);
+                // successor.emplenaAssignacionsGasolinera(j);
+                // successors.add(successor);
             }
         }
         return successors;
