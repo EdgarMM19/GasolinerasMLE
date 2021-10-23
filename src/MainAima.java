@@ -16,7 +16,7 @@ public class MainAima {
         CentrosDistribucion c = new CentrosDistribucion(10, 1, 1234);
         Estat estat = new Estat(c, s);
         estat.generaAssignacioInicial1();
-
+        //estat.printResultats();
         // Create the Problem object
         Problem p = new Problem(estat,
                 new GasolineraSuccesorFunction(),

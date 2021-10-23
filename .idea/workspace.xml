@@ -4,161 +4,63 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb830d75-21ec-421e-a284-4e5c83833e1e" name="Changes" comment="Fix error">
+    <list default="true" id="688e9730-b75d-4d85-9450-30ea697aa46a" name="Changes" comment="Refactor">
+      <change afterPath="$PROJECT_DIR$/src/ExperimentsAima.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GasolineraHeuristicFunctionTroll.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/EstatGasolinera.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/EstatGasolinera.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainAima.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainAima.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainProva.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainProva.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Ruta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Ruta.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Benefici.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Benefici.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Estat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainAima.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainAima.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ruta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ruta.java" afterDir="false" />
     </list>
-    <list id="33138c10-2105-4a70-94e2-63651b567969" name="Changes by edgar" comment="" />
-    <list id="d260b005-edb7-4bcd-b9b8-b4b511ce8b0b" name="Changes by Laia" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
-  </component>
-  <component name="ProjectId" id="1zQAsyhrtC8NOtmNEJnaMFerdtv" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent">
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="Application.MainAima">
-    <configuration name="MainAima" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.AIMA">
+    <configuration name="AIMA" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="MainAima" />
       <module name="GasolinerasMLE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainProva" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainProva" />
+    <configuration name="ExperimentsAima" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ExperimentsAima" />
       <module name="GasolinerasMLE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProbTSPDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="IA.TSP2.ProbTSPDemo" />
-      <module name="GasolinerasMLE" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="IA.TSP2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="IA.Gasolina.Test" />
-      <module name="GasolinerasMLE" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="IA.Gasolina.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <list>
+      <item itemvalue="Application.AIMA" />
+      <item itemvalue="Application.ExperimentsAima" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainAima" />
-        <item itemvalue="Application.MainProva" />
-        <item itemvalue="Application.ProbTSPDemo" />
-        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.ExperimentsAima" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="bb830d75-21ec-421e-a284-4e5c83833e1e" name="Changes" comment="" />
-      <created>1634070149313</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1634070149313</updated>
-      <workItem from="1634070151972" duration="8050000" />
-      <workItem from="1634121524078" duration="233000" />
-      <workItem from="1634562134764" duration="1253000" />
-      <workItem from="1634563533516" duration="9298000" />
-      <workItem from="1634588853558" duration="15808000" />
-      <workItem from="1634735107225" duration="5432000" />
-      <workItem from="1634808730975" duration="28912000" />
-      <workItem from="1634916064720" duration="95000" />
-      <workItem from="1634918380948" duration="30000" />
-      <workItem from="1634983338961" duration="12809000" />
-    </task>
-    <task id="LOCAL-00001" summary="Refactor">
-      <created>1634861757063</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1634861757063</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Fix">
-      <created>1634863843601</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1634863843601</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Fix error">
-      <created>1634999148048</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1634999148048</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -171,11 +73,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor" />
-    <MESSAGE value="Fix" />
-    <MESSAGE value="Fix error" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix error" />
   </component>
 </project>

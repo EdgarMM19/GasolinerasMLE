@@ -11,7 +11,6 @@ public class Estat {
     public static final int max_num_viatges = 5;
     public static final int valor_diposit = 1000;
     public static final int cost_quilometre = 2;
-
     private static int num_centres;
     private static CentrosDistribucion centres;
     private static int num_gasolineres;
@@ -111,8 +110,6 @@ public class Estat {
     /* Print */
 
     public void printResultats() {
-        Benefici.printBenefici(this);
-        System.out.println();
         for (int i = 0; i < num_centres; ++i) {
             System.out.println("* Ruta del centre " + i + " *");
             rutes[i].printRuta();
@@ -127,6 +124,9 @@ public class Estat {
                 System.out.println();
             }
         }
+        System.out.println();
+
+        Benefici.printBenefici(this);
         System.out.println();
     }
 
@@ -224,14 +224,13 @@ public class Estat {
         return true;
     }
 
-    public void esborraUltimViatge(int index_centre)
-    {
+    public void esborraUltimViatge(int index_centre) {
         if (rutes[index_centre].getNumViatges() > 0) {
             if (rutes[index_centre].getUltimaParada().equals(rutes[index_centre].getCentre())) {
                 rutes[index_centre].eliminaParada();
             }
             while (!rutes[index_centre].getUltimaParada().equals(rutes[index_centre].getCentre())) {
-                int index_gasolinera = rutes[index_centre].getUltimaParada().getIndex();
+                int index_gasolinera = rutes[index_centre].getUltimaParada().getIndex()-num_centres;
                 estat_gasolineres[index_gasolinera].esborraServei(index_centre);
                 rutes[index_centre].eliminaParada();
             }
@@ -354,25 +353,33 @@ public class Estat {
     private void emplenaAssignacionsGasolinera(int j) {
     }
 
+    private void intentaAfegirViatgeGasolinera(int j) {
+        int centre_proper = getIndexCentreDisponibleMesProper(j);
+        if (centre_proper != -1) {
+            afegeixViatge(centre_proper);
+        }
+    }
+
     private void esborraAssignacionsGasolinera(int i) {
+
     }
 
     // TODO(maria): refactoritzar
 
-    /*
 
-    private int GetCentreDisponibleMesProper(int index) {
+
+    private int getIndexCentreDisponibleMesProper(int index) {
         int centre_mes_proper = -1;
         for (int i = 0; i < num_centres; ++i) {
-            if (EsPotAfegirViatge(rutes[i], Coordinates.GetCoordsGasolinera(gasolineres.get(index))) &&
+            if (!rutes[i].haAcabat() &&
                     (centre_mes_proper == -1 ||
-                            GetDistanciaEntreNodeICentre(num_centres+index,i) < GetDistanciaEntreNodeICentre(num_centres+index, centre_mes_proper))) {
+                            getDistanciaEntreElements(getIndexGasolinera(index),i) < getDistanciaEntreElements(getIndexGasolinera(index), centre_mes_proper))) {
                 centre_mes_proper = i;
             }
         }
         return centre_mes_proper;
     }
-
+    /*
     public Boolean AfegeixViatgeGasolinera(int index)
     {
         if (!estat_gasolineres[index].GasolineraSatisfeta()) {
@@ -419,12 +426,27 @@ public class Estat {
         for (int i = 0; i < num_gasolineres; ++i) {
             for (int j = 0; j < num_gasolineres; ++j) {
                 if (i == j) continue;
-                // Estat successor = new Estat(this);
-                // successor.esborraAssignacionsGasolinera(i);
-                // successor.esborraAssignacionsGasolinera(j);
+                //Estat successor = new Estat(this);
+                //successor.esborraAssignacionsGasolinera(i);
+                //successor.esborraAssignacionsGasolinera(j);
                 // successor.emplenaAssignacionsGasolinera(i);
                 // successor.emplenaAssignacionsGasolinera(j);
                 // successors.add(successor);
+            }
+        }
+        int max_viatges_a_borrar = 3;
+
+        /* Generem un nou successor borrant iterativament l'ultim viatge de cada centre i intentant emplenar gasolineres
+        * amb aquest viatges extra */
+        Estat iterador = new Estat(this);
+        for (int k = 0; k < max_viatges_a_borrar; ++k) {
+            for (int i = 0; i < num_centres; ++i) {
+                iterador.esborraUltimViatge(i);
+                Estat successor = new Estat(iterador);
+                for (int j = 0; j < num_gasolineres; ++j) {
+                    successor.intentaAfegirViatgeGasolinera(j);
+                }
+                successors.add(successor);
             }
         }
         return successors;

@@ -3,6 +3,7 @@ import IA.Gasolina.Distribucion;
 import java.util.ArrayList;
 
 public class Ruta {
+
     // Un camió cisterna sempre comença i acaba al mateix centre de distribució. Per això, obviem incloure el centre de
     // distribució com a una última parada. Assumirem que després de l'última parada de la ruta es retorna a la de la
     // primera posició.
