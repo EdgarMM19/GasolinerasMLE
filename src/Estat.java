@@ -95,14 +95,12 @@ public class Estat {
         return rutes;
     }
 
-    public Ruta getRuta(int index)
-    {
+    public Ruta getRuta(int index) {
         assert(index >= 0 && index < num_centres);
         return rutes[index];
     }
 
-    public static Gasolinera getGasolinera(int index)
-    {
+    public static Gasolinera getGasolinera(int index) {
         assert(index >= 0 && index < num_gasolineres);
         return gasolineres.get(index);
     }
@@ -351,12 +349,19 @@ public class Estat {
     }
 
     private void emplenaAssignacionsGasolinera(int j) {
+
     }
 
     private void intentaAfegirViatgeGasolinera(int j) {
         int centre_proper = getIndexCentreDisponibleMesProper(j);
         if (centre_proper != -1) {
             afegeixViatge(centre_proper);
+        }
+    }
+
+    private void obligaViatgeGasolineraCentre(int gasolinera, int centre) {
+        while(!afegeixParada(centre, gasolinera)) {
+            esborraUltimViatge(centre);
         }
     }
 
@@ -367,7 +372,16 @@ public class Estat {
     // TODO(maria): refactoritzar
 
 
-
+    private int getIndexCentreMesProper(int index) {
+        int centre_mes_proper = -1;
+        for (int i = 0; i < num_centres; ++i) {
+            if (centre_mes_proper == -1 ||
+                            getDistanciaEntreElements(getIndexGasolinera(index),i) < getDistanciaEntreElements(getIndexGasolinera(index), centre_mes_proper)) {
+                centre_mes_proper = i;
+            }
+        }
+        return centre_mes_proper;
+    }
     private int getIndexCentreDisponibleMesProper(int index) {
         int centre_mes_proper = -1;
         for (int i = 0; i < num_centres; ++i) {
@@ -378,6 +392,20 @@ public class Estat {
             }
         }
         return centre_mes_proper;
+    }
+    private int getIndexGasolineraAmbPeticioMesAntiga() {
+        int index_gasolinera = -1;
+        int antic = -1;
+        for (int i = 0; i < num_gasolineres; ++i) {
+            if (!estat_gasolineres[i].estaServida()) {
+                int peticio = estat_gasolineres[i].getPeticioNoServidaMesAntiga();
+                int dies = gasolineres.get(i).getPeticiones().get(peticio);
+                if (dies > antic) {
+                    index_gasolinera = i;
+                }
+            }
+        }
+        return index_gasolinera;
     }
     /*
     public Boolean AfegeixViatgeGasolinera(int index)
@@ -405,7 +433,19 @@ public class Estat {
         System.out.println("Getting successors " + heuristic.getHeuristicValue(this));
         return getSuccessors1();
     }
-
+    /* Generem un nou successor obligant a servir les n peticions més antigues que encara no estiguin servides */
+    private Estat getSuccessorPeticionsAntigues()
+    {
+        Estat nou = new Estat(this);
+        int peticions_a_servir = 10;
+        for (int i = 0; i < peticions_a_servir; ++i)
+        {
+            int gasolinera = nou.getIndexGasolineraAmbPeticioMesAntiga();
+            int centre = nou.getIndexCentreMesProper(gasolinera);
+            nou.obligaViatgeGasolineraCentre(gasolinera, centre);
+        }
+        return nou;
+    }
     public ArrayList<Estat> getSuccessors1() {
         ArrayList<Estat> successors = new ArrayList<>();
         /* Generem un nou successor per cada parella de centres. El successor es l'estat resultant d'esborrar les rutes
@@ -419,6 +459,8 @@ public class Estat {
                 successor.emplenaRutaCentre(i);
                 successor.emplenaRutaCentre(j);
                 successors.add(successor);
+                // la linia de sota ha empitjorat coses:(
+                successors.add(successor.getSuccessorPeticionsAntigues());
             }
         }
         /* Generem un nou successor per cada parella de gasolineres. El successor es l'estat resultant d'esborrar
@@ -444,11 +486,16 @@ public class Estat {
                 iterador.esborraUltimViatge(i);
                 Estat successor = new Estat(iterador);
                 for (int j = 0; j < num_gasolineres; ++j) {
-                    successor.intentaAfegirViatgeGasolinera(j);
+                    if(!estat_gasolineres[j].estaServida()) {
+                        int centre = successor.getIndexCentreMesProper(j);
+                        successor.obligaViatgeGasolineraCentre(j, centre);
+                    }
                 }
                 successors.add(successor);
             }
         }
+
+
         return successors;
 
     }

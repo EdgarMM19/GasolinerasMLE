@@ -21,7 +21,7 @@ public class MainAima {
         Problem p = new Problem(estat,
                 new GasolineraSuccesorFunction(),
                 new GasolineraGoalTest(),
-                new GasolineraHeuristicFunction1());
+                new GasolineraHeuristicFunction5());
 
         // Instantiate the search algorithm
         Search search = new HillClimbingSearch();
