@@ -11,6 +11,7 @@ public class Estat {
     public static final int max_num_viatges = 5;
     public static final int valor_diposit = 1000;
     public static final int cost_quilometre = 2;
+    public static final double factor_procrastinador = 1.2;
     private static int num_centres;
     private static CentrosDistribucion centres;
     private static int num_gasolineres;
@@ -348,29 +349,26 @@ public class Estat {
         }
     }
 
-    private void emplenaAssignacionsGasolinera(int j) {
+    private void emplenaAssignacionsGasolinera(int index_gasolinera) {
 
     }
 
-    private void intentaAfegirViatgeGasolinera(int j) {
-        int centre_proper = getIndexCentreDisponibleMesProper(j);
+    private void intentaAfegirViatgeGasolinera(int index_gasolinera) {
+        int centre_proper = getIndexCentreDisponibleMesProper(index_gasolinera);
         if (centre_proper != -1) {
             afegeixViatge(centre_proper);
         }
     }
 
-    private void obligaViatgeGasolineraCentre(int gasolinera, int centre) {
-        while(!afegeixParada(centre, gasolinera)) {
-            esborraUltimViatge(centre);
+    private void obligaViatgeAlCentre(int index_gasolinera, int index_centre) {
+        while(!afegeixParada(index_centre, index_gasolinera)) {
+            esborraUltimViatge(index_centre);
         }
     }
 
-    private void esborraAssignacionsGasolinera(int i) {
+    private void esborraAssignacionsGasolinera(int index_gasolinera) {
 
     }
-
-    // TODO(maria): refactoritzar
-
 
     private int getIndexCentreMesProper(int index) {
         int centre_mes_proper = -1;
@@ -382,6 +380,7 @@ public class Estat {
         }
         return centre_mes_proper;
     }
+
     private int getIndexCentreDisponibleMesProper(int index) {
         int centre_mes_proper = -1;
         for (int i = 0; i < num_centres; ++i) {
@@ -393,6 +392,7 @@ public class Estat {
         }
         return centre_mes_proper;
     }
+
     private int getIndexGasolineraAmbPeticioMesAntiga() {
         int index_gasolinera = -1;
         int antic = -1;
@@ -407,24 +407,6 @@ public class Estat {
         }
         return index_gasolinera;
     }
-    /*
-    public Boolean AfegeixViatgeGasolinera(int index)
-    {
-        if (!estat_gasolineres[index].GasolineraSatisfeta()) {
-            int index_centre = GetCentreDisponibleMesProper(index);
-            if (index_centre != -1) {
-                Coordinates coordinates_gasolinera = Coordinates.GetCoordsGasolinera(gasolineres.get(index));
-                if (EsPotAfegirViatge(rutes[index_centre], coordinates_gasolinera)) {
-                    rutes[index_centre].AfegeixParada(coordinates_gasolinera, num_centres + index);
-                    estat_gasolineres[index].CamioArribat(index_centre);
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    */
 
     /* Successors */
 
@@ -440,9 +422,9 @@ public class Estat {
         int peticions_a_servir = 10;
         for (int i = 0; i < peticions_a_servir; ++i)
         {
-            int gasolinera = nou.getIndexGasolineraAmbPeticioMesAntiga();
-            int centre = nou.getIndexCentreMesProper(gasolinera);
-            nou.obligaViatgeGasolineraCentre(gasolinera, centre);
+            int index_gasolinera = nou.getIndexGasolineraAmbPeticioMesAntiga();
+            int index_centre = nou.getIndexCentreMesProper(index_gasolinera);
+            nou.obligaViatgeAlCentre(index_gasolinera, index_centre);
         }
         return nou;
     }
@@ -459,42 +441,9 @@ public class Estat {
                 successor.emplenaRutaCentre(i);
                 successor.emplenaRutaCentre(j);
                 successors.add(successor);
-                // la linia de sota ha empitjorat coses:(
                 successors.add(successor.getSuccessorPeticionsAntigues());
             }
         }
-        /* Generem un nou successor per cada parella de gasolineres. El successor es l'estat resultant d'esborrar
-         * les assignacions de les dues gasolineres i tornar-les a emplenar amb els centres disponibles mes propers. */
-        for (int i = 0; i < num_gasolineres; ++i) {
-            for (int j = 0; j < num_gasolineres; ++j) {
-                if (i == j) continue;
-                //Estat successor = new Estat(this);
-                //successor.esborraAssignacionsGasolinera(i);
-                //successor.esborraAssignacionsGasolinera(j);
-                // successor.emplenaAssignacionsGasolinera(i);
-                // successor.emplenaAssignacionsGasolinera(j);
-                // successors.add(successor);
-            }
-        }
-        int max_viatges_a_borrar = 3;
-
-        /* Generem un nou successor borrant iterativament l'ultim viatge de cada centre i intentant emplenar gasolineres
-        * amb aquest viatges extra */
-        Estat iterador = new Estat(this);
-        for (int k = 0; k < max_viatges_a_borrar; ++k) {
-            for (int i = 0; i < num_centres; ++i) {
-                iterador.esborraUltimViatge(i);
-                Estat successor = new Estat(iterador);
-                for (int j = 0; j < num_gasolineres; ++j) {
-                    if(!estat_gasolineres[j].estaServida()) {
-                        int centre = successor.getIndexCentreMesProper(j);
-                        successor.obligaViatgeGasolineraCentre(j, centre);
-                    }
-                }
-                successors.add(successor);
-            }
-        }
-
 
         return successors;
 
