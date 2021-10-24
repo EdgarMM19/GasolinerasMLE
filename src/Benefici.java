@@ -3,8 +3,8 @@ import IA.Gasolina.Gasolinera;
 public class Benefici {
     static public double getValor(Object estat) {
         Estat dist = (Estat) estat;
-        //return getDinersCobrats(dist) - getQuilometresTotals(dist) * Estat.cost_quilometre + getDinersFuturs(dist);
-        return getDinersCobrats(dist) - getQuilometresTotals(dist) * Estat.cost_quilometre;
+        return getDinersCobrats(dist) - getQuilometresTotals(dist) * Estat.cost_quilometre + getDinersFuturs(dist);
+        //return getDinersCobrats(dist) - getQuilometresTotals(dist) * Estat.cost_quilometre;
 
     }
 

@@ -5,17 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="688e9730-b75d-4d85-9450-30ea697aa46a" name="Changes" comment="Refactor">
-      <change afterPath="$PROJECT_DIR$/src/GasolineraHeuristicFunction5.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Benefici.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Benefici.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1AssignacioCandidata.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1AssignacioCandidata.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1ComparadorAssignacioCandidata.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1ComparadorAssignacioCandidata.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/ExperimentsAima.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/ExperimentsAima.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/EstatGasolinera.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/EstatGasolinera.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainAima.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainAima.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Benefici.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Benefici.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Estat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ExperimentsAima.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ExperimentsAima.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EstatGasolinera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EstatGasolinera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainAima.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainAima.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +36,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ExperimentsAima">
+  <component name="RunManager" selected="Application.AIMA">
     <configuration name="AIMA" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="MainAima" />
       <module name="GasolinerasMLE" />

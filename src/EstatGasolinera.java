@@ -63,6 +63,16 @@ public class EstatGasolinera {
         }
         return peticio;
     }
+    public int getDiesPeticioNoServidaMesAntiga() {
+        assert(estaServida());
+        int dies_peticio = -1;
+        for (int i = 0; i < num_peticions; ++i) {
+            if (assignacio_peticions[i] == -1 && gasolinera.getPeticiones().get(i) > dies_peticio) {
+                dies_peticio = gasolinera.getPeticiones().get(i);
+            }
+        }
+        return dies_peticio;
+    }
 
     public void serveixPeticio(int index_centre) {
         assert(num_peticions > num_peticions_servides);

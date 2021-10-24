@@ -106,6 +106,11 @@ public class Estat {
         return gasolineres.get(index);
     }
 
+    public int[][] getDistancies() {
+        return distancies;
+    }
+
+
     /* Print */
 
     public void printResultats() {
@@ -173,7 +178,7 @@ public class Estat {
             if (!estat_gasolineres[i].estaServida() &&
                     (index_gasolinera == -1 ||
                             (getDistanciaEntreElements(index, getIndexGasolinera(i)) <
-                                    getDistanciaEntreElements(index, index_gasolinera)))) {
+                                    getDistanciaEntreElements(index, getIndexGasolinera(index_gasolinera))))) {
                 index_gasolinera = i;
             }
         }
@@ -208,7 +213,7 @@ public class Estat {
     /* Retorna cert si s'ha pogut afegir un nou viatge i, altrament, retorna fals.
      * S'assigna la peticio mes antiga de la gasolinera mes propera.
      */
-    public boolean afegeixViatge(int index_centre) {
+    public boolean afegeixViatgeDoble(int index_centre) {
         int index_gasolinera = getIndexGasolineraNoServidaMesPropera(rutes[index_centre].getUltimaParada().getIndex());
         if (index_gasolinera == -1) {
             return false;
@@ -222,7 +227,20 @@ public class Estat {
         completaViatge(index_centre);
         return true;
     }
-
+    public boolean afegeixViatgeSimple(int index_centre) {
+        int index_gasolinera = getIndexGasolineraNoServidaMesPropera(rutes[index_centre].getUltimaParada().getIndex());
+        if (index_gasolinera == -1) {
+            return false;
+        }
+        if (rutes[index_centre].calTornarAlCentre()) {
+            rutes[index_centre].afegeixParadaAlCentre();
+        }
+        if (!afegeixParada(index_centre, index_gasolinera)) {
+            return false;
+        }
+        rutes[index_centre].afegeixParadaAlCentre();
+        return true;
+    }
     public void esborraUltimViatge(int index_centre) {
         if (rutes[index_centre].getNumViatges() > 0) {
             if (rutes[index_centre].getUltimaParada().equals(rutes[index_centre].getCentre())) {
@@ -256,11 +274,36 @@ public class Estat {
     }
 
     public void emplenaRutaCentre(int index_centre) {
-        while(afegeixViatge(index_centre));
+        while(afegeixViatgeDoble(index_centre));
     }
 
+    public boolean afegeixMillorViatge(int index_centre) {
+        int index_gasolinera1 = getIndexGasolineraNoServidaMesPropera(index_centre);
+        int index_gasolinera2 = getIndexGasolineraNoServidaMesPropera(getIndexGasolinera(index_gasolinera1));
+        if (viatgeSurtACompte(index_centre, index_gasolinera1, index_gasolinera2)) {
+            return afegeixViatgeDoble(index_centre);
+        }
+        if (viatgeSurtACompte(index_centre, index_gasolinera1)) {
+            return afegeixViatgeSimple(index_centre);
+        }
+        return false;
+    }
     /* Generadors de distribucions inicials */
-
+    private boolean viatgeSurtACompte(int index_centre, int index_gasolinera) {
+        return viatgeSurtACompte(Utils.getCoordinates(centres.get(index_centre)), Utils.getCoordinates(gasolineres.get(index_gasolinera)),
+                estat_gasolineres[index_gasolinera].getDiesPeticioNoServidaMesAntiga());
+    }
+    private boolean viatgeSurtACompte(Coordinates sortida, Coordinates arribada, int dies) {
+        return 2 * Utils.getDistancia(sortida, arribada) * cost_quilometre < PercentatgePreu.getPerdut(dies) * valor_diposit * factor_procrastinador;
+    }
+    private boolean viatgeSurtACompte(int index_centre, int index_gasolinera1, int index_gasolinera2) {
+        return viatgeSurtACompte(Utils.getCoordinates(centres.get(index_centre)), Utils.getCoordinates(gasolineres.get(index_gasolinera1)), Utils.getCoordinates(gasolineres.get(index_gasolinera2)),
+                estat_gasolineres[index_gasolinera1].getDiesPeticioNoServidaMesAntiga(), estat_gasolineres[index_gasolinera2].getDiesPeticioNoServidaMesAntiga());
+    }
+    private boolean viatgeSurtACompte(Coordinates sortida, Coordinates mig, Coordinates arribada, int dies1, int dies2) {
+        return (Utils.getDistancia(sortida, mig) + Utils.getDistancia(mig, arribada) + Utils.getDistancia(arribada, sortida)) * cost_quilometre
+                < (PercentatgePreu.getPerdut(dies1) + PercentatgePreu.getPerdut(dies2)) * valor_diposit * factor_procrastinador;
+    }
     /**
      * Genera una distribucio inicial que consisteix en assignar, a cada peticio de cada gasolinera, el centre de
      * distribucio disponible mes proper. A cada moment, assignem la peticio amb la minima distancia al centre mes
@@ -349,6 +392,86 @@ public class Estat {
         }
     }
 
+    public void generaAssignacioInicialPropers() {
+        /* Reestablim l'assignacio a l'assignacio per defecte. */
+        creaAssignacioPerDefecte();
+
+        class AssignacioCandidata {
+            final int index_centre;
+            final int index_gasolinera;
+            // Guardem el nombre de parades del centre per distingir les assignacions candidates desactualitzades.
+            final int num_parades;
+
+            AssignacioCandidata(int index_centre, int index_gasolinera, int num_parades) {
+                this.index_centre = index_centre;
+                this.index_gasolinera = index_gasolinera;
+                this.num_parades = num_parades;
+            }
+
+            AssignacioCandidata(int index_centre) {
+                this.index_centre = index_centre;
+                this.index_gasolinera = getIndexGasolineraNoServidaMesPropera(index_centre);
+                this.num_parades = rutes[index_centre].getNumParades();
+            }
+        }
+
+        class ComparadorAssignacioCandidata implements Comparator<AssignacioCandidata> {
+            public int compare(AssignacioCandidata ac1, AssignacioCandidata ac2) {
+                int dist1 = getDistanciaEntreElements(ac1.index_centre, getIndexGasolinera(ac1.index_gasolinera));
+                int dist2 = getDistanciaEntreElements(ac2.index_centre, getIndexGasolinera(ac2.index_gasolinera));
+                if (dist1 < dist2) {
+                    return 1;
+                }
+                if (dist1 > dist2) {
+                    return -1;
+                }
+                if (ac1.num_parades < ac2.num_parades) {
+                    return 1;
+                }
+                if (ac1.num_parades > ac2.num_parades) {
+                    return -1;
+                }
+                return Integer.compare(ac1.index_centre, ac2.index_centre);
+            }
+        }
+
+        PriorityQueue<AssignacioCandidata> pq = new PriorityQueue<>(new ComparadorAssignacioCandidata());
+        for (int i = 0; i < num_centres; ++i) {
+            int index_gasolinera_mes_propera = getIndexGasolineraNoServidaMesPropera(i);
+            if (index_gasolinera_mes_propera != -1) {
+                AssignacioCandidata assignacio = new AssignacioCandidata(i, index_gasolinera_mes_propera, rutes[i].getNumParades());
+                pq.add(assignacio);
+            }
+        }
+
+        while (!pq.isEmpty()) {
+            AssignacioCandidata actual = pq.remove();
+
+            /* Comprovem que l'assignacio candidata esta actualitzada. */
+            if (rutes[actual.index_centre].getNumParades() != actual.num_parades) {
+                continue;
+            }
+            /* Comprovem que la gasolinera de l'assignacio candidata no esta servida. */
+            if (!estat_gasolineres[actual.index_gasolinera].estaServida()) {
+                if (rutes[actual.index_centre].calTornarAlCentre()) {
+                    rutes[actual.index_centre].afegeixParadaAlCentre();
+                }
+                if (!afegeixMillorViatge(actual.index_centre))
+                    continue;
+                if (rutes[actual.index_centre].haAcabat()) continue;
+            }
+
+            /* Busquem una nova assignacio per aquest centre */
+            AssignacioCandidata seguent_assignacio = new AssignacioCandidata(actual.index_centre);
+            if (seguent_assignacio.index_gasolinera != -1 &&
+                rutes[actual.index_centre].podriaViatjar(
+                        new Parada(Utils.getCoordinates(gasolineres.get(seguent_assignacio.index_gasolinera)),
+                                getIndexGasolinera(seguent_assignacio.index_gasolinera)))) {
+                pq.add(seguent_assignacio);
+            }
+        }
+    }
+
     private void emplenaAssignacionsGasolinera(int index_gasolinera) {
 
     }
@@ -356,7 +479,7 @@ public class Estat {
     private void intentaAfegirViatgeGasolinera(int index_gasolinera) {
         int centre_proper = getIndexCentreDisponibleMesProper(index_gasolinera);
         if (centre_proper != -1) {
-            afegeixViatge(centre_proper);
+            afegeixViatgeDoble(centre_proper);
         }
     }
 
@@ -413,11 +536,10 @@ public class Estat {
     public ArrayList<Estat> getSuccessors() {
         GasolineraHeuristic heuristic = new GasolineraHeuristicFunction1();
         System.out.println("Getting successors " + heuristic.getHeuristicValue(this));
-        return getSuccessors1();
+        return getSuccessors2();
     }
     /* Generem un nou successor obligant a servir les n peticions més antigues que encara no estiguin servides */
-    private Estat getSuccessorPeticionsAntigues()
-    {
+    private Estat getSuccessorPeticionsAntigues() {
         Estat nou = new Estat(this);
         int peticions_a_servir = 10;
         for (int i = 0; i < peticions_a_servir; ++i)
@@ -448,5 +570,33 @@ public class Estat {
         return successors;
 
     }
+    public ArrayList<Estat> getSuccessors2() {
+        ArrayList<Estat> successors = new ArrayList<>();
+        /* Generem un nou successor per cada parella de centres. El successor es l'estat resultant d'esborrar les rutes
+         * dels dos centres i de tornar-les a emplenar. */
+        for (int i = 0; i < num_centres; ++i) {
+            for (int j = 0; j < num_centres; ++j) {
+                if (i == j) continue;
+                Estat successor = new Estat(this);
+                successor.esborraRutaCentre(i);
+                successor.esborraRutaCentre(j);
+                successor.afegeixMillorViatge(i);
+                successor.afegeixMillorViatge(j);
+                successors.add(successor);
+                successors.add(successor.getSuccessorPeticionsAntigues());
+            }
+        }
+        for (int i = 0; i < num_centres; ++i) {
+            for (int j = 0; j < num_centres; ++j) {
+                if (i == j) continue;
+                Estat successor = new Estat(this);
+                successor.afegeixMillorViatge(i);
+                successor.afegeixMillorViatge(j);
+                successors.add(successor);
+                successors.add(successor.getSuccessorPeticionsAntigues());
+            }
+        }
+        return successors;
 
+    }
 }

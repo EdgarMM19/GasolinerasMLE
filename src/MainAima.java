@@ -15,9 +15,14 @@ public class MainAima {
         Gasolineras s = new Gasolineras(100, 1234);
         CentrosDistribucion c = new CentrosDistribucion(10, 1, 1234);
         Estat estat = new Estat(c, s);
-        estat.generaAssignacioInicial1();
-        //estat.printResultats();
+        System.out.println(Benefici.getValor(estat));
+        //estat.generaAssignacioInicial1();
+        //System.out.println(Benefici.getValor(estat));
+        //estat.generaAssignacioInicialPropers();
+        System.out.println(Benefici.getValor(estat));
+        estat.printResultats();
         // Create the Problem object
+
         Problem p = new Problem(estat,
                 new GasolineraSuccesorFunction(),
                 new GasolineraGoalTest(),
@@ -36,6 +41,7 @@ public class MainAima {
 
         System.out.println();
         ((Estat) search.getGoalState()).printResultats();
+
     }
 
     private static void printInstrumentation(Properties properties) {
