@@ -11,7 +11,7 @@ public class Estat {
     public static final int max_num_viatges = 5;
     public static final int valor_diposit = 1000;
     public static final int cost_quilometre = 2;
-    public static final double factor_procrastinador = 1.2;
+    public static final double factor_procrastinador = 10;
     private static int num_centres;
     private static CentrosDistribucion centres;
     private static int num_gasolineres;
@@ -536,7 +536,9 @@ public class Estat {
     public ArrayList<Estat> getSuccessors() {
         GasolineraHeuristic heuristic = new GasolineraHeuristicFunction1();
         System.out.println("Getting successors " + heuristic.getHeuristicValue(this));
-        return getSuccessors2();
+        ArrayList<Estat> sol = getSuccessors2();
+        sol.addAll(getSuccessors1());
+        return sol;
     }
     /* Generem un nou successor obligant a servir les n peticions més antigues que encara no estiguin servides */
     private Estat getSuccessorPeticionsAntigues() {

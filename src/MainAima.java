@@ -11,13 +11,13 @@ import java.util.Properties;
 
 public class MainAima {
     public static void main(String[] args) throws Exception{
+        long startTime = System.nanoTime();
 
         Gasolineras s = new Gasolineras(100, 1234);
         CentrosDistribucion c = new CentrosDistribucion(10, 1, 1234);
         Estat estat = new Estat(c, s);
         System.out.println(Benefici.getValor(estat));
-        //estat.generaAssignacioInicial1();
-        //System.out.println(Benefici.getValor(estat));
+        estat.generaAssignacioInicial1();
         //estat.generaAssignacioInicialPropers();
         System.out.println(Benefici.getValor(estat));
         estat.printResultats();
@@ -26,7 +26,7 @@ public class MainAima {
         Problem p = new Problem(estat,
                 new GasolineraSuccesorFunction(),
                 new GasolineraGoalTest(),
-                new GasolineraHeuristicFunction5());
+                new GasolineraHeuristicFunction1());
 
         // Instantiate the search algorithm
         Search search = new HillClimbingSearch();
@@ -41,7 +41,8 @@ public class MainAima {
 
         System.out.println();
         ((Estat) search.getGoalState()).printResultats();
-
+        long endTime = System.nanoTime() - startTime;
+        System.out.println(endTime);
     }
 
     private static void printInstrumentation(Properties properties) {
