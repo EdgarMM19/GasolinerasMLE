@@ -1,29 +1,33 @@
 import IA.Gasolina.CentrosDistribucion;
 import IA.Gasolina.Gasolineras;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.random.RandomGenerator;
+
 public class MainProva {
 
     public MainProva(){}
 
     public static void main(String[] args)
     {
-        Gasolineras s = new Gasolineras(100, 1234);
-        CentrosDistribucion c = new CentrosDistribucion(10, 1, 1234);
-        Estat estat = new Estat(c, s);
+        for (int i = 400; i <= 8000; i += 400) {
+            ArrayList<Integer> dades = new ArrayList<>();
+            for (int j = 0; j < 10; ++j) {
+                int seed = ThreadLocalRandom.current().nextInt(0,  10000);;
+                Gasolineras s = new Gasolineras(i, seed);
+                CentrosDistribucion c = new CentrosDistribucion(500, 1, seed);
+                Estat estat = new Estat(c, s);
+                dades.add(estat.generaAssignacioInicial1());
+            }
+            double mitja = Utils.getMitja(dades);
+            double var = Utils.getVariancia(dades);
+            double minim = Collections.min(dades);
+            double max = Collections.max(dades);
+            System.out.println(i + " " + mitja + " " + var + " " + minim + " " + max);
+        }
 
-        estat.creaAssignacioPerDefecte();
-
-        System.out.println("ASSIGNACIO INICIAL PER DEFECTE");
-
-        estat.printResultats();
-
-        System.out.println("ASSIGNACIO INICIAL 1");
-
-        estat.generaAssignacioInicial1();
-
-        estat.printResultats();
-
-        GasolineraHeuristic heuristic = new GasolineraHeuristicFunction1();
-        System.out.println("Heuristic value: " + heuristic.getHeuristicValue(estat));
     }
 }

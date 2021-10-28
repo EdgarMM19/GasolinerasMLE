@@ -1,6 +1,8 @@
 import IA.Gasolina.Distribucion;
 import IA.Gasolina.Gasolinera;
 
+import java.util.ArrayList;
+
 public class Utils {
     static public int getDistancia(int x1, int y1, int x2, int y2)
     {
@@ -39,5 +41,25 @@ public class Utils {
     static public Coordinates getCoordinates(Distribucion d)
     {
         return new Coordinates(d.getCoordX(), d.getCoordY());
+    }
+
+    static public double getMitja(ArrayList<Integer> mostra) {
+        int n = mostra.size();
+        double suma = 0.;
+        for (Integer x : mostra)
+        {
+            suma += x;
+        }
+        return suma/n;
+    }
+    static public double getVariancia(ArrayList<Integer> mostra) {
+        int n = mostra.size();
+        double mitja = getMitja(mostra);
+        double suma = 0.;
+        for (Integer x : mostra)
+        {
+            suma += (x-mitja)*(x-mitja);
+        }
+        return suma/n;
     }
 }

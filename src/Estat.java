@@ -91,18 +91,17 @@ public class Estat {
         return num_gasolineres;
     }
 
-    public Ruta[] getRutes()
-    {
+    public Ruta[] getRutes() {
         return rutes;
     }
 
     public Ruta getRuta(int index) {
-        assert(index >= 0 && index < num_centres);
+        assert (index >= 0 && index < num_centres);
         return rutes[index];
     }
 
     public static Gasolinera getGasolinera(int index) {
-        assert(index >= 0 && index < num_gasolineres);
+        assert (index >= 0 && index < num_gasolineres);
         return gasolineres.get(index);
     }
 
@@ -227,6 +226,7 @@ public class Estat {
         completaViatge(index_centre);
         return true;
     }
+
     public boolean afegeixViatgeSimple(int index_centre) {
         int index_gasolinera = getIndexGasolineraNoServidaMesPropera(rutes[index_centre].getUltimaParada().getIndex());
         if (index_gasolinera == -1) {
@@ -241,13 +241,14 @@ public class Estat {
         rutes[index_centre].afegeixParadaAlCentre();
         return true;
     }
+
     public void esborraUltimViatge(int index_centre) {
         if (rutes[index_centre].getNumViatges() > 0) {
             if (rutes[index_centre].getUltimaParada().equals(rutes[index_centre].getCentre())) {
                 rutes[index_centre].eliminaParada();
             }
             while (!rutes[index_centre].getUltimaParada().equals(rutes[index_centre].getCentre())) {
-                int index_gasolinera = rutes[index_centre].getUltimaParada().getIndex()-num_centres;
+                int index_gasolinera = rutes[index_centre].getUltimaParada().getIndex() - num_centres;
                 estat_gasolineres[index_gasolinera].esborraServei(index_centre);
                 rutes[index_centre].eliminaParada();
             }
@@ -274,7 +275,7 @@ public class Estat {
     }
 
     public void emplenaRutaCentre(int index_centre) {
-        while(afegeixViatgeDoble(index_centre));
+        while (afegeixViatgeDoble(index_centre)) ;
     }
 
     public boolean afegeixMillorViatge(int index_centre) {
@@ -288,28 +289,33 @@ public class Estat {
         }
         return false;
     }
+
     /* Generadors de distribucions inicials */
     private boolean viatgeSurtACompte(int index_centre, int index_gasolinera) {
         return viatgeSurtACompte(Utils.getCoordinates(centres.get(index_centre)), Utils.getCoordinates(gasolineres.get(index_gasolinera)),
                 estat_gasolineres[index_gasolinera].getDiesPeticioNoServidaMesAntiga());
     }
+
     private boolean viatgeSurtACompte(Coordinates sortida, Coordinates arribada, int dies) {
         return 2 * Utils.getDistancia(sortida, arribada) * cost_quilometre < PercentatgePreu.getPerdut(dies) * valor_diposit * factor_procrastinador;
     }
+
     private boolean viatgeSurtACompte(int index_centre, int index_gasolinera1, int index_gasolinera2) {
         return viatgeSurtACompte(Utils.getCoordinates(centres.get(index_centre)), Utils.getCoordinates(gasolineres.get(index_gasolinera1)), Utils.getCoordinates(gasolineres.get(index_gasolinera2)),
                 estat_gasolineres[index_gasolinera1].getDiesPeticioNoServidaMesAntiga(), estat_gasolineres[index_gasolinera2].getDiesPeticioNoServidaMesAntiga());
     }
+
     private boolean viatgeSurtACompte(Coordinates sortida, Coordinates mig, Coordinates arribada, int dies1, int dies2) {
         return (Utils.getDistancia(sortida, mig) + Utils.getDistancia(mig, arribada) + Utils.getDistancia(arribada, sortida)) * cost_quilometre
                 < (PercentatgePreu.getPerdut(dies1) + PercentatgePreu.getPerdut(dies2)) * valor_diposit * factor_procrastinador;
     }
+
     /**
      * Genera una distribucio inicial que consisteix en assignar, a cada peticio de cada gasolinera, el centre de
      * distribucio disponible mes proper. A cada moment, assignem la peticio amb la minima distancia al centre mes
      * proper. Aprofitem el viatge d'un camio per anar a la seguent peticio mes propera.
      */
-    public void generaAssignacioInicial1() {
+    public int generaAssignacioInicial1() {
         /* Reestablim l'assignacio a l'assignacio per defecte. */
         creaAssignacioPerDefecte();
 
@@ -359,8 +365,9 @@ public class Estat {
                 pq.add(new AssignacioCandidata(i, index_gasolinera_mes_propera, rutes[i].getNumParades()));
             }
         }
-
+        int it = 0;
         while (!pq.isEmpty()) {
+            ++it;
             AssignacioCandidata actual = pq.remove();
 
             /* Comprovem que l'assignacio candidata esta actualitzada. */
@@ -390,6 +397,7 @@ public class Estat {
                 pq.add(seguent_assignacio);
             }
         }
+        return it;
     }
 
     public void generaAssignacioInicialPropers() {
@@ -464,9 +472,9 @@ public class Estat {
             /* Busquem una nova assignacio per aquest centre */
             AssignacioCandidata seguent_assignacio = new AssignacioCandidata(actual.index_centre);
             if (seguent_assignacio.index_gasolinera != -1 &&
-                rutes[actual.index_centre].podriaViatjar(
-                        new Parada(Utils.getCoordinates(gasolineres.get(seguent_assignacio.index_gasolinera)),
-                                getIndexGasolinera(seguent_assignacio.index_gasolinera)))) {
+                    rutes[actual.index_centre].podriaViatjar(
+                            new Parada(Utils.getCoordinates(gasolineres.get(seguent_assignacio.index_gasolinera)),
+                                    getIndexGasolinera(seguent_assignacio.index_gasolinera)))) {
                 pq.add(seguent_assignacio);
             }
         }
@@ -484,7 +492,7 @@ public class Estat {
     }
 
     private void obligaViatgeAlCentre(int index_gasolinera, int index_centre) {
-        while(!afegeixParada(index_centre, index_gasolinera)) {
+        while (!afegeixParada(index_centre, index_gasolinera)) {
             esborraUltimViatge(index_centre);
         }
     }
@@ -497,7 +505,7 @@ public class Estat {
         int centre_mes_proper = -1;
         for (int i = 0; i < num_centres; ++i) {
             if (centre_mes_proper == -1 ||
-                            getDistanciaEntreElements(getIndexGasolinera(index),i) < getDistanciaEntreElements(getIndexGasolinera(index), centre_mes_proper)) {
+                    getDistanciaEntreElements(getIndexGasolinera(index), i) < getDistanciaEntreElements(getIndexGasolinera(index), centre_mes_proper)) {
                 centre_mes_proper = i;
             }
         }
@@ -509,7 +517,7 @@ public class Estat {
         for (int i = 0; i < num_centres; ++i) {
             if (!rutes[i].haAcabat() &&
                     (centre_mes_proper == -1 ||
-                            getDistanciaEntreElements(getIndexGasolinera(index),i) < getDistanciaEntreElements(getIndexGasolinera(index), centre_mes_proper))) {
+                            getDistanciaEntreElements(getIndexGasolinera(index), i) < getDistanciaEntreElements(getIndexGasolinera(index), centre_mes_proper))) {
                 centre_mes_proper = i;
             }
         }
@@ -540,18 +548,19 @@ public class Estat {
         sol.addAll(getSuccessors1());
         return sol;
     }
+
     /* Generem un nou successor obligant a servir les n peticions més antigues que encara no estiguin servides */
     private Estat getSuccessorPeticionsAntigues() {
         Estat nou = new Estat(this);
         int peticions_a_servir = 10;
-        for (int i = 0; i < peticions_a_servir; ++i)
-        {
+        for (int i = 0; i < peticions_a_servir; ++i) {
             int index_gasolinera = nou.getIndexGasolineraAmbPeticioMesAntiga();
             int index_centre = nou.getIndexCentreMesProper(index_gasolinera);
             nou.obligaViatgeAlCentre(index_gasolinera, index_centre);
         }
         return nou;
     }
+
     public ArrayList<Estat> getSuccessors1() {
         ArrayList<Estat> successors = new ArrayList<>();
         /* Generem un nou successor per cada parella de centres. El successor es l'estat resultant d'esborrar les rutes
@@ -572,6 +581,7 @@ public class Estat {
         return successors;
 
     }
+
     public ArrayList<Estat> getSuccessors2() {
         ArrayList<Estat> successors = new ArrayList<>();
         /* Generem un nou successor per cada parella de centres. El successor es l'estat resultant d'esborrar les rutes
@@ -599,6 +609,59 @@ public class Estat {
             }
         }
         return successors;
-
+    }
+    // Parelles
+    public Estat getSuccessorsAnnealingGrup1(int i, int j) {
+        /* Generem un nou successor per cada parella de centres. El successor es l'estat resultant d'esborrar les rutes
+         * dels dos centres i de tornar-les a emplenar. */
+        Estat successor = new Estat(this);
+        successor.esborraRutaCentre(i);
+        successor.esborraRutaCentre(j);
+        successor.emplenaRutaCentre(i);
+        successor.emplenaRutaCentre(j);
+        return successor;
+    }
+    // Parelles + antigues
+    public Estat getSuccessorsAnnealingGrup2(int i, int j) {
+        /* Generem un nou successor per cada parella de centres. El successor es l'estat resultant d'esborrar les rutes
+         * dels dos centres i de tornar-les a emplenar. */
+        Estat successor = new Estat(this);
+        successor.esborraRutaCentre(i);
+        successor.esborraRutaCentre(j);
+        successor.emplenaRutaCentre(i);
+        successor.emplenaRutaCentre(j);
+        return successor.getSuccessorPeticionsAntigues();
+    }
+    // Parelles + emplenar nomes 1 viatge
+    public Estat getSuccessorsAnnealingGrup3(int i, int j) {
+        Estat successor = new Estat(this);
+        successor.esborraRutaCentre(i);
+        successor.esborraRutaCentre(j);
+        successor.afegeixMillorViatge(i);
+        successor.afegeixMillorViatge(j);
+        return successor;
+    }
+    // Parelles + emplenar nomes 1 + antigues
+    public Estat getSuccessorsAnnealingGrup4(int i, int j) {
+        Estat successor = new Estat(this);
+        successor.esborraRutaCentre(i);
+        successor.esborraRutaCentre(j);
+        successor.afegeixMillorViatge(i);
+        successor.afegeixMillorViatge(j);
+        return successor;
+    }
+    // emplenar nomes 1 viatge
+    public Estat getSuccessorsAnnealingGrup5(int i, int j) {
+        Estat successor = new Estat(this);
+        successor.afegeixMillorViatge(i);
+        successor.afegeixMillorViatge(j);
+        return successor;
+    }
+    // emplenar nomes 1 viatge + antigues
+    public Estat getSuccessorsAnnealingGrup6(int i, int j) {
+        Estat successor = new Estat(this);
+        successor.afegeixMillorViatge(i);
+        successor.afegeixMillorViatge(j);
+        return successor.getSuccessorPeticionsAntigues();
     }
 }
