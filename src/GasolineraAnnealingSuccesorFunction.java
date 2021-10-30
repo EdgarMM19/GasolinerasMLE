@@ -15,7 +15,6 @@ public class GasolineraAnnealingSuccesorFunction implements SuccessorFunction{
     public List getSuccessors(Object state) {
         ArrayList retVal = new ArrayList();
         Estat estat = (Estat) state;
-        MainAnnealing.valor_iteracio.add(new GasolineraHeuristicFunction1().getHeuristicValue(estat));
         new GasolineraHeuristicFunction1();
         Random myRandom = new Random();
         int i, j;

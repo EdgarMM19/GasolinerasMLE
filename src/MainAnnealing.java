@@ -16,25 +16,26 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class MainAnnealing {
     public static ArrayList<Double> valor_iteracio;
-    private static final int STEPS = 2000;
-    private static final int NUM_IT = 10;
+    private static final int STEPS = 5000;
+    private static final int NUM_IT = 40;
     public static void main(String[] args) throws Exception{
         valor_iteracio = new ArrayList<>();
         try {
-            String filename = "./grafics/annealing3.txt";
+            String filename = "./grafics/annealing5.txt";
             File fitxer = new File(filename);
             if (fitxer.createNewFile()) System.out.println("Fitxer creat: " + filename);
             else System.out.println("Fitxer modificat: " + filename);
             FileWriter writer = new FileWriter(filename);
-            int k = 1;
+            int k = 5;
             int[] seeds = new int[NUM_IT];
             for (int i = 0; i < NUM_IT; ++i)
                 seeds[i] = ThreadLocalRandom.current().nextInt(0, 10000);
-            for (int it_k = 0; it_k < 5; ++it_k) {
-                double lambda = 10.0;
-                for (int it_lambda = 0; it_lambda < 20; ++it_lambda) {
+            for (int it_k = 0; it_k < 1; ++it_k) {
+                double lambda = 1;
+                for (int it_lambda = 0; it_lambda < 10; ++it_lambda) {
                     double[] resultats = new double[STEPS + 1];
                     double resultat_final = 0;
+                    double iteracions = 0;
                     for (int it = 0; it < NUM_IT; ++it) {
                         Gasolineras s = new Gasolineras(100, seeds[it]);
                         CentrosDistribucion c = new CentrosDistribucion(10, 1, seeds[it]);
@@ -50,21 +51,28 @@ public class MainAnnealing {
                         for (int i = 0; i < Math.min(STEPS, valor_iteracio.size()); ++i) {
                             resultats[i] -= valor_iteracio.get(i);
                         }
-                        resultat_final += Benefici.getValor((Estat) search.getGoalState());
+                        double benefici = Benefici.getValor((Estat) search.getGoalState());
+                        for (int i = 0; i < Math.min(STEPS, valor_iteracio.size()); ++i){
+                            if (Math.abs(valor_iteracio.get(i) - valor_iteracio.get(valor_iteracio.size()-1)) < 2){
+                                iteracions += i;
+                                break;
+                            }
+                        }
+                        resultat_final += benefici;
                         valor_iteracio = new ArrayList<>();
                     }
                     for (int i = 0; i < STEPS; ++i) {
                         resultats[i] /= NUM_IT;
                     }
                     resultat_final /= NUM_IT;
-                    writer.write(lambda + " " + k + " " + resultat_final);
+                    iteracions /= NUM_IT;
+                    writer.write(lambda + " " + k + " " + resultat_final + " " + iteracions);
                     for (int i = 0; i < STEPS; ++i) {
                         writer.write(" " + resultats[i]);
                     }
                     writer.write("\n");
-                    lambda /= 8.;
+                    lambda /= 3.;
                 }
-                k *= 5;
             }
             writer.close();
         } catch (Exception e) {

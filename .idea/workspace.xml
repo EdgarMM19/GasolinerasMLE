@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="688e9730-b75d-4d85-9450-30ea697aa46a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ExperimentGrandaria.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/annealing3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/grafics/annealing3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/grafics.py" beforeDir="false" afterPath="$PROJECT_DIR$/grafics/grafics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraAnnealingSuccesorFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraAnnealingSuccesorFunction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainAnnealing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainAnnealing.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GasolineraAnnealingSuccesorFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GasolineraAnnealingSuccesorFunction.java" afterDir="false" />
@@ -37,9 +40,16 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainAnnealing">
+  <component name="RunManager" selected="Application.ExperimentGrandaria">
     <configuration name="AIMA" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="MainAima" />
+      <module name="GasolinerasMLE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExperimentGrandaria" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ExperimentGrandaria" />
       <module name="GasolinerasMLE" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -85,9 +95,11 @@
       <item itemvalue="Application.MainProva" />
       <item itemvalue="Application.MainAnnealing" />
       <item itemvalue="Application.ProbTSPDemo" />
+      <item itemvalue="Application.ExperimentGrandaria" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ExperimentGrandaria" />
         <item itemvalue="Application.MainAnnealing" />
         <item itemvalue="Application.ProbTSPDemo" />
         <item itemvalue="Application.MainProva" />
