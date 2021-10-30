@@ -2,6 +2,7 @@ import IA.probTSP.ProbTSPBoard;
 import IA.probTSP.ProbTSPHeuristicFunction;
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
+import com.sun.tools.javac.Main;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,6 @@ public class GasolineraAnnealingSuccesorFunction implements SuccessorFunction{
     }
 
     public List getSuccessors(Object state) {
-
         ArrayList retVal = new ArrayList();
         Estat estat = (Estat) state;
         new GasolineraHeuristicFunction1();
