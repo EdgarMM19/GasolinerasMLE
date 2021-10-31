@@ -105,11 +105,6 @@ public class Estat {
         return gasolineres.get(index);
     }
 
-    public int[][] getDistancies() {
-        return distancies;
-    }
-
-
     /* Print */
 
     public void printResultats() {
@@ -132,11 +127,6 @@ public class Estat {
         Benefici.printBenefici(this);
         System.out.println();
     }
-
-    public void printAssignacionsGasolinera(int index_gasolinera) {
-        estat_gasolineres[index_gasolinera].printPeticions();
-    }
-
 
     /* Utils */
 
@@ -489,16 +479,6 @@ public class Estat {
         }
     }
 
-    private void emplenaAssignacionsGasolinera(int index_gasolinera) {
-
-    }
-
-    private void intentaAfegirViatgeGasolinera(int index_gasolinera) {
-        int centre_proper = getIndexCentreDisponibleMesProper(index_gasolinera);
-        if (centre_proper != -1) {
-            afegeixViatgeDoble(centre_proper);
-        }
-    }
 
     private void obligaViatgeAlCentre(int index_gasolinera, int index_centre) {
         if (rutes[index_centre].calTornarAlCentre()) {
@@ -507,10 +487,6 @@ public class Estat {
         while (!afegeixParada(index_centre, index_gasolinera)) {
             esborraUltimaParada(index_centre);
         }
-    }
-
-    private void esborraAssignacionsGasolinera(int index_gasolinera) {
-
     }
 
     private int getIndexCentreMesProper(int index) {

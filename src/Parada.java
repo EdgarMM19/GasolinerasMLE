@@ -18,10 +18,6 @@ public class Parada {
         return coordinates;
     }
 
-    public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
-    }
-
     public Integer getIndex() {
         return index;
     }
