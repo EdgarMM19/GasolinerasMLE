@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="688e9730-b75d-4d85-9450-30ea697aa46a" name="Changes" comment="Add Experiment 2">
+    <list default="true" id="688e9730-b75d-4d85-9450-30ea697aa46a" name="Changes" comment="Add Experiments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1AssignacioCandidata.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1AssignacioCandidata.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1ComparadorAssignacioCandidata.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1ComparadorAssignacioCandidata.class" afterDir="false" />
@@ -15,9 +15,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/ExperimentsHillClimbing.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraSuccesorFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraSuccesorFunction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainAima.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainAima.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainInicial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainExperiment1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainExperiment1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainExperiment2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainExperiment2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Estat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estat.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +56,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainInicial">
+  <component name="RunManager" selected="Application.MainAnnealing">
     <configuration name="AIMA" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="MainAima" />
       <module name="GasolinerasMLE" />
@@ -111,11 +109,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainAnnealing" />
         <item itemvalue="Application.MainInicial" />
         <item itemvalue="Application.MainExperiment2" />
         <item itemvalue="Application.MainExperiment1" />
         <item itemvalue="Application.ExperimentGrandaria" />
-        <item itemvalue="Application.MainAnnealing" />
       </list>
     </recent_temporary>
   </component>
@@ -134,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635698132767</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add Experiments">
+      <created>1635707228846</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1635707228846</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -153,7 +158,8 @@
     <MESSAGE value="Delete ExperimentsHillClimbing.java" />
     <MESSAGE value="Add Experiment 1" />
     <MESSAGE value="Add Experiment 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Experiment 2" />
+    <MESSAGE value="Add Experiments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Experiments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
