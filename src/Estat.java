@@ -255,6 +255,15 @@ public class Estat {
         }
     }
 
+    private void esborraUltimaParada(int index_centre) {
+        if (rutes[index_centre].getNumParades() > 1) {
+            if (!rutes[index_centre].esCentre(rutes[index_centre].getUltimaParada())) {
+                estat_gasolineres[getReverseIndexGasolinera(rutes[index_centre].getUltimaParada().getIndex())].esborraServei(index_centre);
+            }
+            rutes[index_centre].eliminaParada();
+        }
+    }
+
     /* Intenta completar el viatge del camio cisterna del centre donat. El viatge s'ha de poder completar. */
     public void completaViatge(int index_centre) {
         if (!rutes[index_centre].calTornarAlCentre()) {
@@ -492,8 +501,11 @@ public class Estat {
     }
 
     private void obligaViatgeAlCentre(int index_gasolinera, int index_centre) {
+        if (rutes[index_centre].calTornarAlCentre()) {
+            rutes[index_centre].afegeixParadaAlCentre();
+        }
         while (!afegeixParada(index_centre, index_gasolinera)) {
-            esborraUltimViatge(index_centre);
+            esborraUltimaParada(index_centre);
         }
     }
 
@@ -550,9 +562,8 @@ public class Estat {
     }
 
     /* Generem un nou successor obligant a servir les n peticions més antigues que encara no estiguin servides */
-    private Estat getSuccessorPeticionsAntigues() {
+    private Estat getSuccessorPeticionsAntigues(int peticions_a_servir) {
         Estat nou = new Estat(this);
-        int peticions_a_servir = 10;
         for (int i = 0; i < peticions_a_servir; ++i) {
             int index_gasolinera = nou.getIndexGasolineraAmbPeticioMesAntiga();
             int index_centre = nou.getIndexCentreMesProper(index_gasolinera);
@@ -574,7 +585,7 @@ public class Estat {
                 successor.emplenaRutaCentre(i);
                 successor.emplenaRutaCentre(j);
                 successors.add(successor);
-                successors.add(successor.getSuccessorPeticionsAntigues());
+                successors.add(successor.getSuccessorPeticionsAntigues(10));
             }
         }
 
@@ -584,8 +595,17 @@ public class Estat {
 
     public ArrayList<Estat> getSuccessors2() {
         ArrayList<Estat> successors = new ArrayList<>();
-        /* Generem un nou successor per cada parella de centres. El successor es l'estat resultant d'esborrar les rutes
-         * dels dos centres i de tornar-les a emplenar. */
+        for (int i = 0; i < num_centres; ++i) {
+            Estat successor = new Estat(this);
+            successor.afegeixViatgeSimple(i);
+            successors.add(successor);
+        }
+        return successors;
+    }
+
+    /* no el fem servir */
+    public ArrayList<Estat> getSuccessors3() {
+        ArrayList<Estat> successors = new ArrayList<>();
         for (int i = 0; i < num_centres; ++i) {
             for (int j = 0; j < num_centres; ++j) {
                 if (i == j) continue;
@@ -595,7 +615,7 @@ public class Estat {
                 successor.afegeixMillorViatge(i);
                 successor.afegeixMillorViatge(j);
                 successors.add(successor);
-                successors.add(successor.getSuccessorPeticionsAntigues());
+                successors.add(successor.getSuccessorPeticionsAntigues(10));
             }
         }
         for (int i = 0; i < num_centres; ++i) {
@@ -605,11 +625,12 @@ public class Estat {
                 successor.afegeixMillorViatge(i);
                 successor.afegeixMillorViatge(j);
                 successors.add(successor);
-                successors.add(successor.getSuccessorPeticionsAntigues());
+                successors.add(successor.getSuccessorPeticionsAntigues(10));
             }
         }
         return successors;
     }
+
     // Parelles
     public Estat getSuccessorsAnnealingGrup1(int i, int j) {
         /* Generem un nou successor per cada parella de centres. El successor es l'estat resultant d'esborrar les rutes
@@ -630,7 +651,7 @@ public class Estat {
         successor.esborraRutaCentre(j);
         successor.emplenaRutaCentre(i);
         successor.emplenaRutaCentre(j);
-        return successor.getSuccessorPeticionsAntigues();
+        return successor.getSuccessorPeticionsAntigues(10);
     }
     // Parelles + emplenar nomes 1 viatge
     public Estat getSuccessorsAnnealingGrup3(int i, int j) {
@@ -662,6 +683,48 @@ public class Estat {
         Estat successor = new Estat(this);
         successor.afegeixMillorViatge(i);
         successor.afegeixMillorViatge(j);
-        return successor.getSuccessorPeticionsAntigues();
+        return successor.getSuccessorPeticionsAntigues(10);
+    }
+
+    public ArrayList<Estat> getSuccessorsAfegeix() {
+        ArrayList<Estat> successors = new ArrayList<>();
+        for (int i = 0; i < num_centres; ++i) {
+            Estat successor = new Estat(this);
+            successor.afegeixViatgeSimple(i);
+            successors.add(successor);
+        }
+        return successors;
+    }
+
+    public ArrayList<Estat> getSuccessorsEsborra() {
+        ArrayList<Estat> successors = new ArrayList<>();
+        for (int i = 0; i < num_centres; ++i) {
+            Estat successor = new Estat(this);
+            successor.esborraUltimaParada(i);
+            successors.add(successor);
+        }
+        return successors;
+    }
+
+    public ArrayList<Estat> getSuccessorsCombina() {
+        ArrayList<Estat> successors = new ArrayList<>();
+        for (int i = 0; i < num_centres; ++i) {
+            for (int j = 0; j < num_centres; ++j) {
+                if (i == j) continue;
+                Estat successor = new Estat(this);
+                successor.esborraRutaCentre(i);
+                successor.esborraRutaCentre(j);
+                successor.emplenaRutaCentre(i);
+                successor.emplenaRutaCentre(j);
+                successors.add(successor);
+            }
+        }
+        return successors;
+    }
+
+    public ArrayList<Estat> getSuccessorsServeix(int N) {
+        ArrayList<Estat> successors = new ArrayList<>();
+        successors.add(this.getSuccessorPeticionsAntigues(N));
+        return successors;
     }
 }

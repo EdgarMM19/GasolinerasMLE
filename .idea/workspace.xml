@@ -4,15 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="688e9730-b75d-4d85-9450-30ea697aa46a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ExperimentGrandaria.java" afterDir="false" />
+    <list default="true" id="688e9730-b75d-4d85-9450-30ea697aa46a" name="Changes" comment="Delete ExperimentsHillClimbing.java">
+      <change afterPath="$PROJECT_DIR$/src/MainExperiment1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grafics/annealing3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/grafics/annealing3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grafics/grafics.py" beforeDir="false" afterPath="$PROJECT_DIR$/grafics/grafics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraAnnealingSuccesorFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraAnnealingSuccesorFunction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainAnnealing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainAnnealing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GasolineraAnnealingSuccesorFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GasolineraAnnealingSuccesorFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainAnnealing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainAnnealing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1AssignacioCandidata.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1AssignacioCandidata.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1ComparadorAssignacioCandidata.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1ComparadorAssignacioCandidata.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$2AssignacioCandidata.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$2AssignacioCandidata.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$2ComparadorAssignacioCandidata.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$2ComparadorAssignacioCandidata.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/EstatGasolinera.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/EstatGasolinera.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraSuccesorFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraSuccesorFunction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Estat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EstatGasolinera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EstatGasolinera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GasolineraSuccesorFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GasolineraSuccesorFunction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +33,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="PropertiesComponent">
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -40,7 +52,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ExperimentGrandaria">
+  <component name="RunManager" selected="Application.MainExperiment1">
     <configuration name="AIMA" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="MainAima" />
       <module name="GasolinerasMLE" />
@@ -55,15 +67,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExperimentsAima" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ExperimentsAima" />
+    <configuration name="MainAnnealing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainAnnealing" />
       <module name="GasolinerasMLE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainAnnealing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainAnnealing" />
+    <configuration name="MainExperiment1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainExperiment1" />
       <module name="GasolinerasMLE" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -91,19 +103,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.AIMA" />
-      <item itemvalue="Application.ExperimentsAima" />
       <item itemvalue="Application.MainProva" />
       <item itemvalue="Application.MainAnnealing" />
       <item itemvalue="Application.ProbTSPDemo" />
       <item itemvalue="Application.ExperimentGrandaria" />
+      <item itemvalue="Application.MainExperiment1" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainExperiment1" />
         <item itemvalue="Application.ExperimentGrandaria" />
         <item itemvalue="Application.MainAnnealing" />
         <item itemvalue="Application.ProbTSPDemo" />
         <item itemvalue="Application.MainProva" />
-        <item itemvalue="Application.ExperimentsAima" />
       </list>
     </recent_temporary>
   </component>
@@ -121,6 +133,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Delete ExperimentsHillClimbing.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete ExperimentsHillClimbing.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

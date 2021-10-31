@@ -52,7 +52,6 @@ public class EstatGasolinera {
     }
 
     public int getPeticioNoServidaMesAntiga() {
-        assert(estaServida());
         int peticio = -1;
         int dies_peticio = -1;
         for (int i = 0; i < num_peticions; ++i) {
