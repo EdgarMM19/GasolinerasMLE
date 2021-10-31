@@ -32,7 +32,6 @@ public class MainExperiment1 {
 
             for (int i = 0; i < OPS.length; ++i) {
                 for (int k = 0; k < ITERS; k++) {
-                    ArrayList<Double> currEvolucion = new ArrayList<>();
 
                     Gasolineras s = new Gasolineras(100, k);
                     CentrosDistribucion c = new CentrosDistribucion(10, 1, k);
