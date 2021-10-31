@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="688e9730-b75d-4d85-9450-30ea697aa46a" name="Changes" comment="Add Experiment 1">
-      <change afterPath="$PROJECT_DIR$/resultatsExperiments/inicial/box_plot_benefici.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultatsExperiments/inicial/box_plot_nodes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultatsExperiments/inicial/box_plot_temps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultatsExperiments/operadors/box_plot_comparacio.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MainExperiment2.java" afterDir="false" />
+    <list default="true" id="688e9730-b75d-4d85-9450-30ea697aa46a" name="Changes" comment="Add Experiment 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1AssignacioCandidata.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1AssignacioCandidata.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1ComparadorAssignacioCandidata.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1ComparadorAssignacioCandidata.class" afterDir="false" />
@@ -19,7 +14,10 @@
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/EstatGasolinera.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/EstatGasolinera.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/ExperimentsHillClimbing.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraSuccesorFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraSuccesorFunction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainAima.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainAima.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainInicial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainExperiment1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainExperiment1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainExperiment2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainExperiment2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +58,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainExperiment2">
+  <component name="RunManager" selected="Application.MainInicial">
     <configuration name="AIMA" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="MainAima" />
       <module name="GasolinerasMLE" />
@@ -96,15 +94,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProbTSPDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="IA.probTSP.ProbTSPDemo" />
+    <configuration name="MainInicial" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainInicial" />
       <module name="GasolinerasMLE" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="IA.probTSP.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -112,18 +104,18 @@
     <list>
       <item itemvalue="Application.AIMA" />
       <item itemvalue="Application.MainAnnealing" />
-      <item itemvalue="Application.ProbTSPDemo" />
       <item itemvalue="Application.ExperimentGrandaria" />
       <item itemvalue="Application.MainExperiment1" />
       <item itemvalue="Application.MainExperiment2" />
+      <item itemvalue="Application.MainInicial" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainInicial" />
         <item itemvalue="Application.MainExperiment2" />
         <item itemvalue="Application.MainExperiment1" />
         <item itemvalue="Application.ExperimentGrandaria" />
         <item itemvalue="Application.MainAnnealing" />
-        <item itemvalue="Application.ProbTSPDemo" />
       </list>
     </recent_temporary>
   </component>
@@ -135,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635681573075</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add Experiment 2">
+      <created>1635698132767</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1635698132767</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -153,7 +152,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Delete ExperimentsHillClimbing.java" />
     <MESSAGE value="Add Experiment 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Experiment 1" />
+    <MESSAGE value="Add Experiment 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Experiment 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
