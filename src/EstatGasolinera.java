@@ -34,7 +34,7 @@ public class EstatGasolinera {
     public int getNumPeticionsServides() {
         return num_peticions_servides;
     }
-    
+
     /* Utils */
 
     public boolean estaServida()

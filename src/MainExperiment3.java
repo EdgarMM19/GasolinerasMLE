@@ -14,14 +14,15 @@ import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class MainAnnealing {
+// Per fer funcionar aquest experiment s'ha de modificar la classe GasolineraAnnealingSuccesorFunction
+public class MainExperiment3 {
     public static ArrayList<Double> valor_iteracio;
     private static final int STEPS = 5000;
     private static final int NUM_IT = 40;
     public static void main(String[] args) throws Exception{
         valor_iteracio = new ArrayList<>();
         try {
-            String filename = "./grafics/annealing5.txt";
+            String filename = "./grafics/annealing6.txt";
             File fitxer = new File(filename);
             if (fitxer.createNewFile()) System.out.println("Fitxer creat: " + filename);
             else System.out.println("Fitxer modificat: " + filename);

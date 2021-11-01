@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class MainProva {
+public class MainProbaEstatInicial {
 
-    public MainProva(){}
+    public MainProbaEstatInicial(){}
 
     public static void main(String[] args)
     {

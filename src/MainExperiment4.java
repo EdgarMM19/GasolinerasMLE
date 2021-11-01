@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class ExperimentGrandaria {
+public class MainExperiment4 {
     private static final int NUM_IT = 20;
     public static void main(String[] args) throws Exception{
         try {

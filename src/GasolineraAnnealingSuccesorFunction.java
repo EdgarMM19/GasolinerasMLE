@@ -15,6 +15,8 @@ public class GasolineraAnnealingSuccesorFunction implements SuccessorFunction{
     public List getSuccessors(Object state) {
         ArrayList retVal = new ArrayList();
         Estat estat = (Estat) state;
+        // Per fer el experiment 3 funcionar s'ha de descomentar la següent linia:
+        //MainExperiment3.valor_iteracio.add(Benefici.getValor(estat));
         new GasolineraHeuristicFunction1();
         Random myRandom = new Random();
         int i, j;

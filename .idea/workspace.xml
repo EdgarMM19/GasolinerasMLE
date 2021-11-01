@@ -4,18 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="688e9730-b75d-4d85-9450-30ea697aa46a" name="Changes" comment="Add Experiments">
+    <list default="true" id="688e9730-b75d-4d85-9450-30ea697aa46a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/grandaria2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/grafics/grandaria2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Benefici.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Benefici.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Coordinates.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Coordinates.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1AssignacioCandidata.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1AssignacioCandidata.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1ComparadorAssignacioCandidata.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1ComparadorAssignacioCandidata.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$2AssignacioCandidata.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$2AssignacioCandidata.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$2ComparadorAssignacioCandidata.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$2ComparadorAssignacioCandidata.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$2AssignacioCandidata.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$2ComparadorAssignacioCandidata.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/EstatGasolinera.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/EstatGasolinera.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/ExperimentGrandaria.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/ExperimentsAima.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/ExperimentsAima.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/ExperimentsHillClimbing.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraHeuristicFunction1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraHeuristicFunction1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraHeuristicFunctionTroll.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraSuccesorFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraSuccesorFunction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainAima.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Estat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainProva.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Parada.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Parada.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Ruta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Ruta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EstatGasolinera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EstatGasolinera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ExperimentGrandaria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainExperiment4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GasolineraAnnealingSuccesorFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GasolineraAnnealingSuccesorFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainAnnealing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainExperiment3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainProva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainProbaEstatInicial.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +54,15 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="ProjectId" id="20JKRwAdCidP6AYkO5GbHdZysjl" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resultatsExperiments/inicial" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -56,23 +78,9 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainAnnealing">
+  <component name="RunManager" selected="Application.MainExperiment3">
     <configuration name="AIMA" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="MainAima" />
-      <module name="GasolinerasMLE" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ExperimentGrandaria" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ExperimentGrandaria" />
-      <module name="GasolinerasMLE" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainAnnealing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainAnnealing" />
       <module name="GasolinerasMLE" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -92,6 +100,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainExperiment3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainExperiment3" />
+      <module name="GasolinerasMLE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainExperiment4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainExperiment4" />
+      <module name="GasolinerasMLE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainInicial" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainInicial" />
       <module name="GasolinerasMLE" />
@@ -101,22 +123,23 @@
     </configuration>
     <list>
       <item itemvalue="Application.AIMA" />
-      <item itemvalue="Application.MainAnnealing" />
-      <item itemvalue="Application.ExperimentGrandaria" />
       <item itemvalue="Application.MainExperiment1" />
       <item itemvalue="Application.MainExperiment2" />
       <item itemvalue="Application.MainInicial" />
+      <item itemvalue="Application.MainExperiment4" />
+      <item itemvalue="Application.MainExperiment3" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainAnnealing" />
+        <item itemvalue="Application.MainExperiment3" />
+        <item itemvalue="Application.MainExperiment4" />
         <item itemvalue="Application.MainInicial" />
         <item itemvalue="Application.MainExperiment2" />
         <item itemvalue="Application.MainExperiment1" />
-        <item itemvalue="Application.ExperimentGrandaria" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="Add Experiment 1">
       <created>1635681573075</created>
@@ -139,8 +162,19 @@
       <option name="project" value="LOCAL" />
       <updated>1635707228846</updated>
     </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="688e9730-b75d-4d85-9450-30ea697aa46a" name="Changes" comment="" />
+      <created>1635757252135</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1635757252135</updated>
+      <workItem from="1635757257147" duration="357000" />
+    </task>
     <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
