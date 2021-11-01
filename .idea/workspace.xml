@@ -4,32 +4,67 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="688e9730-b75d-4d85-9450-30ea697aa46a" name="Changes" comment="">
+    <list default="true" id="688e9730-b75d-4d85-9450-30ea697aa46a" name="Changes" comment="Delete unused methods">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grafics/grandaria2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/grafics/grandaria2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Benefici.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Benefici.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Coordinates.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Coordinates.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1AssignacioCandidata.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1AssignacioCandidata.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1ComparadorAssignacioCandidata.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1ComparadorAssignacioCandidata.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/AnnealingCostIt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/AnnealingIterIt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/BenIt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/BenIt3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/ItIt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/IterIt2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/IterIt3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/LambdaItIt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/RawAnnealing" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/RawAnnealing.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/annealing.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/annealing2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/annealing3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/annealing4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/annealing5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/beneficiIt2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/grafics.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/grandaria.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/grandaria2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/lambdaBenIt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/logkBenIt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/logkItIt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grafics/parser.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Benefici.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Coordinates.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1AssignacioCandidata.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$1ComparadorAssignacioCandidata.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$2AssignacioCandidata.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat$2ComparadorAssignacioCandidata.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/EstatGasolinera.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/EstatGasolinera.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Estat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/EstatGasolinera.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/ExperimentGrandaria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/ExperimentsAima.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/ExperimentsAima.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/ExperimentsAima.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/ExperimentsHillClimbing.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraHeuristicFunction1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraHeuristicFunction1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraAnnealingSuccesorFunction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraGoalTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraHeuristic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraHeuristicFunction1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraHeuristicFunction2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraHeuristicFunction3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraHeuristicFunction4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraHeuristicFunction5.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraHeuristicFunctionTroll.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraSuccesorFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraSuccesorFunction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/GasolineraSuccesorFunction.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainAima.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainAnnealing.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/MainProva.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Parada.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Parada.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Ruta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasolinerasMLE/Ruta.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EstatGasolinera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EstatGasolinera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ExperimentGrandaria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainExperiment4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GasolineraAnnealingSuccesorFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GasolineraAnnealingSuccesorFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainAnnealing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainExperiment3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainProva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainProbaEstatInicial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Parada.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/PercentatgePreu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Ruta.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasolinerasMLE/Utils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resultatsExperiments/inicial/box_plot_benefici.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resultatsExperiments/inicial/box_plot_nodes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resultatsExperiments/inicial/box_plot_temps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resultatsExperiments/operadors/box_plot_benefici.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resultatsExperiments/operadors/box_plot_comparacio.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resultatsExperiments/operadors/box_plot_nodes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resultatsExperiments/operadors/box_plot_temps.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +89,7 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="ProjectId" id="20JKRwAdCidP6AYkO5GbHdZysjl" />
+  <component name="ProjectId" id="20KIEL9TdH5oHCmB0egeyhAEKrX" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -62,7 +97,6 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resultatsExperiments/inicial" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -78,9 +112,23 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainExperiment3">
+  <component name="RunManager" selected="Application.MainAnnealing">
     <configuration name="AIMA" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="MainAima" />
+      <module name="GasolinerasMLE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExperimentGrandaria" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ExperimentGrandaria" />
+      <module name="GasolinerasMLE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainAnnealing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainAnnealing" />
       <module name="GasolinerasMLE" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -100,20 +148,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainExperiment3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainExperiment3" />
-      <module name="GasolinerasMLE" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainExperiment4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainExperiment4" />
-      <module name="GasolinerasMLE" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MainInicial" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainInicial" />
       <module name="GasolinerasMLE" />
@@ -123,19 +157,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.AIMA" />
+      <item itemvalue="Application.MainAnnealing" />
+      <item itemvalue="Application.ExperimentGrandaria" />
       <item itemvalue="Application.MainExperiment1" />
       <item itemvalue="Application.MainExperiment2" />
       <item itemvalue="Application.MainInicial" />
-      <item itemvalue="Application.MainExperiment4" />
-      <item itemvalue="Application.MainExperiment3" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainExperiment3" />
-        <item itemvalue="Application.MainExperiment4" />
+        <item itemvalue="Application.MainAnnealing" />
         <item itemvalue="Application.MainInicial" />
         <item itemvalue="Application.MainExperiment2" />
         <item itemvalue="Application.MainExperiment1" />
+        <item itemvalue="Application.ExperimentGrandaria" />
       </list>
     </recent_temporary>
   </component>
@@ -162,19 +196,22 @@
       <option name="project" value="LOCAL" />
       <updated>1635707228846</updated>
     </task>
+    <task id="LOCAL-00004" summary="Delete unused methods">
+      <created>1635707430014</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1635707430014</updated>
+    </task>
     <task active="true" id="Default" summary="Default task">
-      <changelist id="688e9730-b75d-4d85-9450-30ea697aa46a" name="Changes" comment="" />
-      <created>1635757252135</created>
+      <changelist id="688e9730-b75d-4d85-9450-30ea697aa46a" name="Changes" comment="Delete unused methods" />
+      <created>1635786742262</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1635757252135</updated>
-      <workItem from="1635757257147" duration="357000" />
+      <updated>1635786742262</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="5" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -193,7 +230,8 @@
     <MESSAGE value="Add Experiment 1" />
     <MESSAGE value="Add Experiment 2" />
     <MESSAGE value="Add Experiments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Experiments" />
+    <MESSAGE value="Delete unused methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete unused methods" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
