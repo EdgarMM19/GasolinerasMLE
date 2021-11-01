@@ -23,6 +23,20 @@ public class Benefici {
         return cost_quilometres_totals;
     }
 
+    public static int getNumPeticionsServides(Estat estat, int dia) {
+        int peticions_servides = 0;
+        for (int i = 0; i < Estat.getNumGasolineres(); ++i) {
+            Gasolinera gasolinera = Estat.getGasolinera(i);
+            for (int j = 0; j < gasolinera.getPeticiones().size(); ++j) {
+                int dies_peticio = Estat.getDiesPeticio(i, j);
+                if (estat.haServitPeticio(i, j) && (dies_peticio == dia || dia == -1)) {
+                    ++peticions_servides;
+                }
+            }
+        }
+        return peticions_servides;
+    }
+
     private static int getDinersCobrats(Estat estat) {
         int diners_cobrats = 0;
         for (int i = 0; i < Estat.getNumGasolineres(); ++i) {
@@ -48,4 +62,6 @@ public class Benefici {
         }
         return diners_futurs;
     }
+
+
 }

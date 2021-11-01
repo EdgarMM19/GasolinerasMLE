@@ -7,10 +7,10 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class Estat {
-    public static final int max_quilometres = 640;
-    public static final int max_num_viatges = 5;
+    public static int max_quilometres = 640;
+    public static int max_num_viatges = 5;
     public static final int valor_diposit = 1000;
-    public static final int cost_quilometre = 2;
+    public static int cost_quilometre = 2;
     public static final double factor_procrastinador = 10;
     private static int num_centres;
     private static CentrosDistribucion centres;
