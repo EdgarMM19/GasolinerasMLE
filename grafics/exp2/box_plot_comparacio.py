@@ -7,7 +7,7 @@ data = []
 legend = []
 
 for i in [2,5]:
-    filename = f"./operadors{i+1}_boxplot_temps.csv"
+    filename = f"../../resultatsExperiments/experiment2/operadors{i+1}_boxplot_temps.csv"
     legend.append(operadors[i])
     with open(filename, "r") as f:
         curr_data = [float(x) for x in f.readlines()]

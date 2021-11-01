@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Properties;
 
 public class MainExperiment7 {
-    public static void main(String[] args) throws Exception {
+    public static void main() throws Exception {
         final int ITERS = 1000;
         final int N = 10;
         final int[] max_km = {560, 640, 720};
@@ -24,8 +24,8 @@ public class MainExperiment7 {
                     Gasolineras s = new Gasolineras(100, k);
                     CentrosDistribucion c = new CentrosDistribucion(10, 1, k);
                     Estat estat = new Estat(c, s);
-                    estat.max_quilometres  = max_km[i];
-                    estat.max_num_viatges = viatges_max;
+                    Estat.max_quilometres = max_km[i];
+                    Estat.max_num_viatges = viatges_max;
 
                     estat.creaAssignacioPerDefecte();
 
@@ -45,7 +45,7 @@ public class MainExperiment7 {
             }
 
             for (int i = 0; i < 3; ++i) {
-                String filename = "./resultatsExperiments/exp7/boxplot_benefici_" + (7+i) + "hores.csv";
+                String filename = "../resultatsExperiments/experiment7/boxplot_benefici_" + (7+i) + "hores.csv";
                 File fitxer = new File(filename);
                 if (fitxer.createNewFile()) System.out.println("Fitxer creat: " + filename);
                 else System.out.println("Fitxer modificat: " + filename);
@@ -59,23 +59,6 @@ public class MainExperiment7 {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    private static void printInstrumentation(Properties properties) {
-        Iterator keys = properties.keySet().iterator();
-        while (keys.hasNext()) {
-            String key = (String) keys.next();
-            String property = properties.getProperty(key);
-            System.out.println(key + " : " + property);
-        }
-
-    }
-
-    private static void printActions(List actions) {
-        for (int i = 0; i < actions.size(); i++) {
-            String action = (String) actions.get(i);
-            System.out.println(action);
         }
     }
 }

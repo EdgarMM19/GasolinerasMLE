@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 
 public class MainExperiment1 {
-    public static void main(String[] args) throws Exception {
+    public static void main() throws Exception {
         boolean[][] OPS = {
                 {false, false, false, true},
                 {true, true, false, false},
@@ -53,7 +53,7 @@ public class MainExperiment1 {
             }
 
             for (int i = 0; i < 7; ++i) {
-                String filename = "./resultatsExperiments/operadors/operadors" + (i + 1) + "_boxplot_benefici.csv";
+                String filename = "../resultatsExperiments/experiment1/operadors" + (i + 1) + "_boxplot_benefici.csv";
                 File fitxer = new File(filename);
                 if (fitxer.createNewFile()) System.out.println("Fitxer creat: " + filename);
                 else System.out.println("Fitxer modificat: " + filename);
@@ -65,7 +65,7 @@ public class MainExperiment1 {
                 writer.close();
             }
             for (int i = 0; i < 7; ++i) {
-                String filename = "./resultatsExperiments/operadors/operadors" + (i + 1) + "_boxplot_temps.csv";
+                String filename = "../resultatsExperiments/experiment1/operadors" + (i + 1) + "_boxplot_temps.csv";
                 File fitxer = new File(filename);
                 if (fitxer.createNewFile()) System.out.println("Fitxer creat: " + filename);
                 else System.out.println("Fitxer modificat: " + filename);
@@ -77,7 +77,7 @@ public class MainExperiment1 {
                 writer.close();
             }
             for (int i = 0; i < 7; ++i) {
-                String filename = "./resultatsExperiments/operadors/operadors" + (i + 1) + "_boxplot_nodes.csv";
+                String filename = "../resultatsExperiments/experiment1/operadors" + (i + 1) + "_boxplot_nodes.csv";
                 File fitxer = new File(filename);
                 if (fitxer.createNewFile()) System.out.println("Fitxer creat: " + filename);
                 else System.out.println("Fitxer modificat: " + filename);

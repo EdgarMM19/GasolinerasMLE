@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Properties;
 
 public class MainExperiment5 {
-    public static void main(String[] args) throws Exception {
+    public static void main() throws Exception {
         final int ITERS = 1000;
         final int N = 10;
         try {
@@ -65,7 +65,7 @@ public class MainExperiment5 {
             }
 
             for (int i = 0; i < 2; ++i) {
-                String filename = "./resultatsExperiments/exp5/cas" + (i) + "_boxplot_benefici.csv";
+                String filename = "../resultatsExperiments/experiment5/cas" + (i) + "_boxplot_benefici.csv";
                 File fitxer = new File(filename);
                 if (fitxer.createNewFile()) System.out.println("Fitxer creat: " + filename);
                 else System.out.println("Fitxer modificat: " + filename);
@@ -77,7 +77,7 @@ public class MainExperiment5 {
                 writer.close();
             }
             for (int i = 0; i < 2; ++i) {
-                String filename = "./resultatsExperiments/exp5/cas" + (i) + "_boxplot_quilometres.csv";
+                String filename = "../resultatsExperiments/experiment5/cas" + (i) + "_boxplot_quilometres.csv";
                 File fitxer = new File(filename);
                 if (fitxer.createNewFile()) System.out.println("Fitxer creat: " + filename);
                 else System.out.println("Fitxer modificat: " + filename);
@@ -91,23 +91,6 @@ public class MainExperiment5 {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    private static void printInstrumentation(Properties properties) {
-        Iterator keys = properties.keySet().iterator();
-        while (keys.hasNext()) {
-            String key = (String) keys.next();
-            String property = properties.getProperty(key);
-            System.out.println(key + " : " + property);
-        }
-
-    }
-
-    private static void printActions(List actions) {
-        for (int i = 0; i < actions.size(); i++) {
-            String action = (String) actions.get(i);
-            System.out.println(action);
         }
     }
 }

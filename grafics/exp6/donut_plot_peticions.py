@@ -12,7 +12,7 @@ def func(pct, allvals):
 
 for i in range(6):
     fig, ax = plt.subplots(figsize=(6, 3), subplot_kw=dict(aspect="equal"))
-    filename = f"./num_peticions_cost{i+1}.csv"
+    filename = f"../../resultatsExperiments/experiment6/num_peticions_cost{i+1}.csv"
     with open(filename, "r") as f:
         data = [float(x) for x in f.readlines()]
     plt.title(f"Cost per quilòmetre = {cost[i]} €")

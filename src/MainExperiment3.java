@@ -19,10 +19,10 @@ public class MainExperiment3 {
     public static ArrayList<Double> valor_iteracio;
     private static final int STEPS = 5000;
     private static final int NUM_IT = 40;
-    public static void main(String[] args) throws Exception{
+    public static void main() throws Exception{
         valor_iteracio = new ArrayList<>();
         try {
-            String filename = "./grafics/annealing6.txt";
+            String filename = "../resultatsExperiments/experiment3/annealing.txt";
             File fitxer = new File(filename);
             if (fitxer.createNewFile()) System.out.println("Fitxer creat: " + filename);
             else System.out.println("Fitxer modificat: " + filename);
@@ -78,23 +78,6 @@ public class MainExperiment3 {
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    private static void printInstrumentation(Properties properties) {
-        Iterator keys = properties.keySet().iterator();
-        while (keys.hasNext()) {
-            String key = (String) keys.next();
-            String property = properties.getProperty(key);
-            System.out.println(key + " : " + property);
-        }
-
-    }
-
-    private static void printActions(List actions) {
-        for (int i = 0; i < actions.size(); i++) {
-            String action = (String) actions.get(i);
-            System.out.println(action);
         }
     }
 }

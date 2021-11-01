@@ -16,9 +16,9 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class MainExperiment4 {
     private static final int NUM_IT = 20;
-    public static void main(String[] args) throws Exception{
+    public static void main() throws Exception{
         try {
-            String filename = "./grafics/grandaria2.txt";
+            String filename = "../resultatsExperiments/experiment4/grandaria.txt";
             File fitxer = new File(filename);
             if (fitxer.createNewFile()) System.out.println("Fitxer creat: " + filename);
             else System.out.println("Fitxer modificat: " + filename);
@@ -71,23 +71,6 @@ public class MainExperiment4 {
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    private static void printInstrumentation(Properties properties) {
-        Iterator keys = properties.keySet().iterator();
-        while (keys.hasNext()) {
-            String key = (String) keys.next();
-            String property = properties.getProperty(key);
-            System.out.println(key + " : " + property);
-        }
-
-    }
-
-    private static void printActions(List actions) {
-        for (int i = 0; i < actions.size(); i++) {
-            String action = (String) actions.get(i);
-            System.out.println(action);
         }
     }
 }

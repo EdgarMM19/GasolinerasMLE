@@ -1,21 +1,21 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-operadors = ["S", "AE", "C", "AEC", "AES", "CS", "AECS"]
+estrategia = ["buida", "voraç"]
 
 data = []
 legend = []
 
-for i in range(7):
-    filename = f"./operadors{i+1}_boxplot_benefici.csv"
-    legend.append(operadors[i])
+for i in range(2):
+    filename = f"../../resultatsExperiments/experiment1/{estrategia[i]}_boxplot_nodes.csv"
+    legend.append(estrategia[i])
     with open(filename, "r") as f:
         curr_data = [float(x) for x in f.readlines()]
     data.append(curr_data)
 
-plt.xlabel('Conjunt d\'operadors')
-plt.ylabel('Benefici (€)')
+plt.xlabel('Estratègia inicial')
+plt.ylabel('Nombre de passos')
 plt.boxplot(data, labels=legend, flierprops=dict(marker='.', markeredgecolor='b', markersize=1))
 plt.tight_layout()
-plt.savefig("boxplot-operadors-benefici.png", dpi=200)
+plt.savefig("boxplot-inicial-nodes.png", dpi=200)
 plt.show()

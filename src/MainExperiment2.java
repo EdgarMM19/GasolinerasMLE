@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 
 public class MainExperiment2 {
-    public static void main(String[] args) throws Exception {
+    public static void main() throws Exception {
         final int ITERS = 1000;
         try {
             double[] benefici_buida = new double[ITERS];
@@ -72,7 +72,7 @@ public class MainExperiment2 {
             }
 
             {
-                String filename_b1 = "./resultatsExperiments/inicial/buida_boxplot_benefici.csv";
+                String filename_b1 = "../resultatsExperiments/experiment2/buida_boxplot_benefici.csv";
                 File fitxer_b1 = new File(filename_b1);
                 if (fitxer_b1.createNewFile()) System.out.println("Fitxer creat: " + filename_b1);
                 else System.out.println("Fitxer modificat: " + filename_b1);
@@ -83,7 +83,7 @@ public class MainExperiment2 {
                 }
                 writer_b1.close();
 
-                String filename_b2 = "./resultatsExperiments/inicial/buida_boxplot_temps.csv";
+                String filename_b2 = "../resultatsExperiments/experiment2/buida_boxplot_temps.csv";
                 File fitxer_b2 = new File(filename_b2);
                 if (fitxer_b2.createNewFile()) System.out.println("Fitxer creat: " + filename_b2);
                 else System.out.println("Fitxer modificat: " + filename_b2);
@@ -94,7 +94,7 @@ public class MainExperiment2 {
                 }
                 writer_b2.close();
 
-                String filename_b3 = "./resultatsExperiments/inicial/buida_boxplot_nodes.csv";
+                String filename_b3 = "../resultatsExperiments/experiment2/buida_boxplot_nodes.csv";
                 File fitxer_b3 = new File(filename_b3);
                 if (fitxer_b3.createNewFile()) System.out.println("Fitxer creat: " + filename_b3);
                 else System.out.println("Fitxer modificat: " + filename_b3);
@@ -107,7 +107,7 @@ public class MainExperiment2 {
             }
 
             {
-                String filename_b1 = "./resultatsExperiments/inicial/voraç_boxplot_benefici.csv";
+                String filename_b1 = "../resultatsExperiments/experiment2/voraç_boxplot_benefici.csv";
                 File fitxer_b1 = new File(filename_b1);
                 if (fitxer_b1.createNewFile()) System.out.println("Fitxer creat: " + filename_b1);
                 else System.out.println("Fitxer modificat: " + filename_b1);
@@ -118,7 +118,7 @@ public class MainExperiment2 {
                 }
                 writer_b1.close();
 
-                String filename_b2 = "./resultatsExperiments/inicial/voraç_boxplot_temps.csv";
+                String filename_b2 = "../resultatsExperiments/experiment2/voraç_boxplot_temps.csv";
                 File fitxer_b2 = new File(filename_b2);
                 if (fitxer_b2.createNewFile()) System.out.println("Fitxer creat: " + filename_b2);
                 else System.out.println("Fitxer modificat: " + filename_b2);
@@ -129,7 +129,7 @@ public class MainExperiment2 {
                 }
                 writer_b2.close();
 
-                String filename_b3 = "./resultatsExperiments/inicial/voraç_boxplot_nodes.csv";
+                String filename_b3 = "../resultatsExperiments/experiment2/voraç_boxplot_nodes.csv";
                 File fitxer_b3 = new File(filename_b3);
                 if (fitxer_b3.createNewFile()) System.out.println("Fitxer creat: " + filename_b3);
                 else System.out.println("Fitxer modificat: " + filename_b3);

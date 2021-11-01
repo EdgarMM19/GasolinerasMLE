@@ -10,7 +10,7 @@ kslog = []
 valors = []
 iters = []
 estab = []
-with open("annealing5.txt", "r") as o:
+with open("../../resultatsExperiments/experiment3/annealing.txt", "r") as o:
     lines = o.read().split("\n")[:-1]
     for line in lines:
         nums = line.split(" ")

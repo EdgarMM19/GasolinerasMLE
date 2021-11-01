@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 data = []
 cost = [2,4,8,16,32,64,128]
 
-filename = f"./num_peticions.csv"
+filename = f"../../resultatsExperiments/experiment6/num_peticions.csv"
 with open(filename, "r") as f:
     data = [float(x) for x in f.readlines()]
 

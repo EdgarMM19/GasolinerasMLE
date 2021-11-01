@@ -7,10 +7,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
-public class MainInicial {
-    public static void main(String[] args) throws Exception{
-        final int ITERS = 10;
-
+public class MainExperiment8 {
+    public static void main() throws Exception{
+        final int ITERS = 1;
         for (int k = 0; k < ITERS; ++k) {
             Gasolineras s = new Gasolineras(100, 1234);
             CentrosDistribucion c = new CentrosDistribucion(10, 1, 1234);
@@ -29,8 +28,6 @@ public class MainInicial {
             long finish = System.nanoTime();
             double timeElapsed = (finish - start) / 1000000.0;
             System.out.println("time elapsed " + timeElapsed + " ms");
-
-            System.out.println();
             System.out.println("Benefici: " + Benefici.getValor(search.getGoalState()));
         }
     }

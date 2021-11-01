@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Properties;
 
 public class MainExperiment6 {
-    public static void main(String[] args) throws Exception {
+    public static void main() throws Exception {
         final int ITERS = 100;
         final int CASOS = 7;
         final int N = 10;
@@ -27,7 +27,7 @@ public class MainExperiment6 {
                     Gasolineras s = new Gasolineras(100, k);
                     CentrosDistribucion c = new CentrosDistribucion(10, 1, k);
                     Estat estat = new Estat(c, s);
-                    estat.cost_quilometre = cost_km_recorregut;
+                    Estat.cost_quilometre = cost_km_recorregut;
 
                     estat.creaAssignacioPerDefecte();
 
@@ -53,7 +53,7 @@ public class MainExperiment6 {
 
             }
 
-            String filename = "./resultatsExperiments/exp6/num_peticions.csv";
+            String filename = "../resultatsExperiments/experiment6/num_peticions.csv";
             File fitxer = new File(filename);
             if (fitxer.createNewFile()) System.out.println("Fitxer creat: " + filename);
             else System.out.println("Fitxer modificat: " + filename);
@@ -65,7 +65,7 @@ public class MainExperiment6 {
             writer.close();
 
             for (int j = 0; j < CASOS; ++j ) {
-                filename = "./resultatsExperiments/exp6/num_peticions_cost" + (j+1) + ".csv";
+                filename = "../resultatsExperiments/experiment6/num_peticions_cost" + (j+1) + ".csv";
                 fitxer = new File(filename);
                 if (fitxer.createNewFile()) System.out.println("Fitxer creat: " + filename);
                 else System.out.println("Fitxer modificat: " + filename);
@@ -79,23 +79,6 @@ public class MainExperiment6 {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    private static void printInstrumentation(Properties properties) {
-        Iterator keys = properties.keySet().iterator();
-        while (keys.hasNext()) {
-            String key = (String) keys.next();
-            String property = properties.getProperty(key);
-            System.out.println(key + " : " + property);
-        }
-
-    }
-
-    private static void printActions(List actions) {
-        for (int i = 0; i < actions.size(); i++) {
-            String action = (String) actions.get(i);
-            System.out.println(action);
         }
     }
 }
