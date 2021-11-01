@@ -34,11 +34,7 @@ public class EstatGasolinera {
     public int getNumPeticionsServides() {
         return num_peticions_servides;
     }
-
-    public int[] getAssignacioPeticions() {
-        return assignacio_peticions;
-    }
-
+    
     /* Utils */
 
     public boolean estaServida()
